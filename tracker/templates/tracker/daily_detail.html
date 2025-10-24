@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>📅 Lịch tập chi tiết</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(180deg, #fff5f9, #fff);
+      font-family: 'Poppins', sans-serif;
+      color: #d63384;
+      text-align: center;
+      padding: 60px;
+    }
+    .card {
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+      max-width: 450px;
+      background-color: white;
+    }
+    .back-btn {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: #ffd6e8;
+      color: #d63384;
+      border-radius: 10px;
+      padding: 8px 18px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-btn:hover {
+      background-color: #ff99cc;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  {% if error %}
+    <h3>{{ error }}</h3>
+  {% else %}
+  <div class="card">
+    <h2>📅 {{ day.Day }} Plan</h2>
+    <p><b>Mục tiêu kcal:</b> {{ day.Target_kcal }}</p>
+    <p><b>Thời lượng gợi ý:</b> {{ day.Suggest_Duration_min }} phút</p>
+    <p><b>Nhịp tim gợi ý:</b> {{ day.Suggest_HR_bpm }} bpm</p>
+    <p><b>Đạt được:</b> {{ day.Est_kcal }} kcal</p>
+    <p><b>Ghi chú:</b> {{ day.Note }}</p>
+  </div>
+  {% endif %}
+  <a href="{% url 'goal_plan' %}" class="back-btn">⬅️ Quay lại kế hoạch tuần</a>
+</body>
+</html>
