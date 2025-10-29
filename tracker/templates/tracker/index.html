@@ -2,157 +2,46 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>🌸 Hello Kitty Fitness 🌸</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      background: linear-gradient(180deg, #ffeaf5, #fff);
-      font-family: 'Poppins', sans-serif;
-      color: #d63384;
-      min-height: 100vh;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    h1.quote {
-      font-weight: 800;
-      font-size: 2.4rem;
-      color: #ff4da6;
-      text-shadow: 0 0 10px rgba(255, 105, 180, 0.25);
-      margin-bottom: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    /* 🌸 Hộp nút */
-    .btn-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 80px;
-      flex-wrap: wrap;
-    }
-
-    .btn-card {
-      width: 240px;
-      height: 200px;
-      border-radius: 25px;
-      border: none;
-      background: white;
-      box-shadow: 0 8px 25px rgba(255, 102, 204, 0.2);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #d63384;
-      font-weight: 700;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-
-    .btn-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 35px rgba(255, 51, 153, 0.35);
-      background: linear-gradient(180deg, #fff, #ffe6f2);
-    }
-
-    .desc {
-      margin-top: 15px;
-      color: #c22789;
-      font-size: 0.95rem;
-      max-width: 280px;
-    }
-
-    /* 🩰 Ảnh Kitty trang trí */
-    .kitty {
-      position: absolute;
-      opacity: 0.95;
-      animation: floatKitty 6s ease-in-out infinite alternate;
-    }
-
-    .kitty.left {
-      width: 120px;
-      bottom: 20px;
-      left: 40px;
-      transform: rotate(-5deg);
-    }
-
-    .kitty.right {
-      width: 120px;
-      bottom: 20px;
-      right: 40px;
-      transform: rotate(5deg);
-      animation-delay: 1.5s;
-    }
-
-    .kitty.top {
-      width: 100px;
-      top: 20px;
-      right: 60px;
-      animation-delay: 2s;
-    }
-
-    .kitty.topleft {
-        width: 100px;
-        top: 20px;
-        left: 60px;
-        animation-delay: 2s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes floatKitty {
-      from { transform: translateY(0) rotate(0deg); }
-      to { transform: translateY(-10px) rotate(2deg); }
-    }
-  </style>
+ <meta charset="UTF-8">
+ <title>🌸 Hello Kitty Fitness 🌸</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="{% static 'tracker/css/style.css' %}">
+ <!--font Modak and DynaPuff-->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Modak&display=swap" rel="stylesheet">
 </head>
 
+
 <body>
-  <h1 class="quote">🌸 SỐNG KHỎE MỖI NGÀY CÙNG HELLO KITTY NHÉ! 🌸</h1>
-
-  <div class="btn-box">
-    <div>
-      <form action="{% url 'today_calories' %}" method="get">
-        <button type="submit" class="btn-card">
-          <i class="fas fa-burn fa-2x mb-2"></i>
-          Hôm nay
-        </button>
-      </form>
-
-      <p class="desc">Xem hôm nay bạn đã đốt được bao nhiêu calories nhé 💪</p>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src= {% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
+      <h1>Kitty Fitness</h1>
     </div>
+    <nav>
+      <a href="#">Liên hệ</a>
+      <a href="#">Đăng nhập</a>
+      <a href="#">Đăng ký</a>
+    </nav>
+  </header>
 
-    <div>
-      <form action="{% url 'goal_plan' %}" method="get">
-        <button type="submit" class="btn-card">
-        🎯 Mục tiêu
-        </button>
-      </form>
-      <p class="desc">Nhập mục tiêu để Kitty lên lịch tập cho bạn 🧘‍♀️</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-left">
+      <img src= {% static 'tracker/images/landing_photo.png'%} alt="landing_photo.png">
     </div>
-  </div>
+    <div class="hero-right">
+      <h2 class="title">HELLO KITTY FITNESS</h2>
+      <h3 class="subtitle">Sống khoẻ mỗi ngày cùng Hello Kitty nhé!</h3>
+      <p class="desc">
+        Chào mừng bạn đến với Hello Kitty Fitness – nơi giúp bạn xây dựng thói quen tập luyện lành mạnh, theo dõi lượng calories và tận hưởng hành trình khoẻ đẹp mỗi ngày.
+      </p>
+      <button class="cta-btn">Bắt đầu ngay</button>
+    </div>
+  </section>
 
-  <!-- 🐱 Ảnh Kitty (3 góc) -->
-  <img src="{% static 'images/2b07241c8fb5cd3f5e9156ab2c7e7b10.jpg' %}" class="kitty left" alt="">
-  <img src="{% static 'images/917b3f82658f09b3ff4762348e66a792.jpg' %}" class="kitty right" alt="">
-  <img src="{% static 'images/aaf7a4467a41fb9976f86ef0df0da625.jpg' %}" class="kitty top" alt="">
-  <img src="{% static 'images/ff638c48e51b0240ddcb61ef28daafcd.jpg' %}" class="kitty topleft" alt="">
 </body>
 </html>
