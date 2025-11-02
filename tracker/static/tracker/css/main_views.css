@@ -1,0 +1,331 @@
+/*-------font Modak and DynaPuff-------*/
+.modak-regular {
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dynapuff {
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.sigmar {
+  font-family: "Sigmar One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-bubbles-regular {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.maven-pro {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/*-------font Modak and DynaPuff-------*/
+
+body {
+  margin: 0;
+  font-family: "Maven Pro", sans-serif;
+  background-color: #ffd6eb;
+  color: #7a1c48;
+  overflow: auto;
+}
+
+/* --------Header-------------- */
+header {
+  background-color: #d85a8d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+header .logo img {
+  width: 60px;
+  height: 60px;
+}
+
+header h1 {
+  font-family: "Sigmar One", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  font-weight: 1;
+  top: 3px; 
+  margin: 0; 
+  line-height: 1;
+  position: relative;   
+}
+
+nav a {
+  font-family: "Maven Pro", sans-serif;
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+  letter-spacing: 4.5px; 
+  margin-left: 50px;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+/* --------Header-------------- */
+
+/* ------ Viền gợn sóng dưới header---------- */
+body {
+  margin: 0;
+  background-color: #ffd6eb;
+  font-family: "Maven Pro", sans-serif;
+}
+
+/* Header */
+header {
+  background-color: #d85a8d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 50px;
+  letter-spacing: 4px;
+}
+
+/* --------Hero section (inside luow song)------------ */
+.hero { 
+  height: 500px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 160px; 
+  position: relative;
+  overflow: visible;
+  margin-top: 6px; 
+  gap: 140px; 
+  z-index: 2; 
+}
+
+/* Trái */
+.left {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kitty-img {
+  width: 280px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+}
+
+/* Chữ cong */
+.circle-text {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; 
+}
+
+.circle-text svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+/* Phải */
+.right {
+  position: relative;
+  margin-top: -90px; 
+  max-width: 800px; 
+  text-align: center;
+  font-family: "Maven Pro", sans-serif; 
+}
+
+.title{
+  font-family: "Sigmar One", sans-serif;
+  font-weight: 500; 
+  font-size: 3rem; 
+}
+
+.quote {
+  letter-spacing: 2px;
+  margin-top: -20px;
+  font-weight: 400;
+  font-size: 1.7rem;
+}
+
+.desc {
+  margin-left: 70px; 
+  margin-right: 70px; 
+  font-size: 1.1rem; 
+  line-height: 25px;
+}
+
+/* --------Hero section (inside luow song)------------ */
+
+.wave {
+      --size: 40px; /* 👈 nhỏ hơn = nhiều gợn hơn */
+      --m: 1.4;
+      --p: calc(var(--m)*var(--size));
+      --R: calc(var(--size)*sqrt(var(--m)*var(--m) + 1));
+
+      height: 500px;
+      width: 100%;
+      position: relative;
+      top: -506px; 
+      left: 0;
+      transform: rotate(180deg); /* lật sóng xuống dưới */
+      z-index:1; 
+
+      mask:
+        radial-gradient(var(--R) at left 50% var(--d,top) calc(var(--size) + var(--p)), #000 99%, #0000 101%)
+          calc(50% - 2*var(--size)) 0 / calc(4*var(--size)) 100%,
+        radial-gradient(var(--R) at left 50% var(--d,top) calc(-1*var(--p)), #0000 99%, #000 101%)
+          left 50% var(--d,top) var(--size) / calc(4*var(--size)) 100% repeat-x;
+
+      background-color: #f187ac; 
+    }
+
+
+
+
+
+/* 🌸 KHẢO SÁT THỂ CHẤT */
+.survey-section {
+  background-color: #ffd6eb;
+  display: flex;
+  justify-content: center;
+  padding: 60px 0 80px 0;
+}
+
+.survey-card {
+  background-color: #f4a7cd;
+  border-radius: 25px;
+  margin-top: -530px; 
+  padding: 40px 50px;
+  width: 650px;
+  box-shadow: 0 5px 15px rgba(150, 30, 70, 0.2);
+  color: #7a1c48;
+  text-align: center;
+}
+
+.survey-card h2 {
+  font-family: "Sigmar One", sans-serif;
+  color: #7a1c48;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.survey-card p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+label {
+  flex: 1 0 40%;
+  text-align: left;
+  font-weight: 600;
+  color: #7a1c48;
+}
+
+input {
+  flex: 1 0 50%;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffc2dc;
+  outline: none;
+  font-family: inherit;
+  color: #7a1c48; 
+}
+
+select {
+  flex: 1 0 50%;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffc2dc;
+  outline: none;
+  font-family: inherit;
+  color: #7a1c48;
+  appearance: none;
+  cursor: pointer;
+}
+
+select:focus {
+  background-color: #ffcee6;
+  box-shadow: 0 0 4px #ff7fbf;
+}
+
+input:focus {
+  background-color: #ffcee6;
+  box-shadow: 0 0 4px #ff7fbf;
+}
+
+button {
+  background-color: #d85a8d;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold; 
+  border: none;
+  padding: 10px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #c24b6e;
+}

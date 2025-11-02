@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from features_for_web.weekly_planner import UserProfile, goal_translator
+from django.http import HttpResponse
 
-
-def index(request):
+def landing_page(request):
     if request.method == "POST":
         weight = float(request.POST.get("weight"))
         activity = request.POST.get("activity")
@@ -30,7 +30,7 @@ def index(request):
             "data": calories_list,
         })
 
-    return render(request, "tracker/index.html")
+    return render(request, "tracker/landing_page.html")
 
 def today_calories(request):
     calories_burned = None  # biến để lưu kết quả
@@ -119,3 +119,24 @@ def daily_detail(request, day_name):
     row = WEEKLY_PLAN_CACHE[WEEKLY_PLAN_CACHE["Day"] == day_name].iloc[0]
     return render(request, 'tracker/daily_detail.html', {'day': row})
 
+def main_views(request):
+    return render(request, 'tracker/main_views.html')
+
+def save_survey(request):
+    if request.method == "POST":
+        # nhận dữ liệu từ form
+        age = request.POST.get("age")
+        gender = request.POST.get("gender")
+        height = request.POST.get("height")
+        weight = request.POST.get("weight")
+        bpm = request.POST.get("bpm")
+        temperature = request.POST.get("temperature")
+        efficiency = request.POST.get("efficiency")
+        intensity = request.POST.get("intensity")
+
+        # bạn có thể lưu vào model ở đây, hoặc tạm in ra console
+        print(age, gender, height, weight, bpm, temperature, efficiency, intensity)
+
+        return HttpResponse("<h2>💖 Cảm ơn bạn đã hoàn thành khảo sát!</h2>")
+
+    return redirect("/")

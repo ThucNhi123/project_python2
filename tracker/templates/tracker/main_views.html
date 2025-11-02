@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>🌸 Hello Kitty Fitness 🌸</title>
+   <!--font Modak and DynaPuff-->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'tracker/css/main_views.css' %}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src= {% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
+      <h1>Kitty Fitness</h1>
+    </div>
+    <nav>
+      <a href="#">Liên hệ</a>
+      <a href="#">Đăng nhập</a>
+      <a href="#">Đăng ký</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section (nền hồng đậm + Kitty + chữ) -->
+  
+  <section class="hero">
+    <div class="left">
+      <div class="circle-text">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <path id="textcircle"
+                  d="M180,200 m-160,0 a160,160 0 1,1 330,0 a160,160 0 1,1 -320,0" />
+          </defs>
+          <text font-size="50" fill="#c24b6e" font-family="'Rubik Bubbles', cursive">
+            <textPath href="#textcircle" startOffset="50%" text-anchor="middle">
+              KITTY FITNESS
+            </textPath>
+          </text>
+        </svg>
+      </div>
+      <img src="{% static 'tracker/images/main_views_1.png' %}" alt="Hello Kitty" class="kitty-img">
+    </div>
+
+    <div class="right">
+      <h1 class="title">ĐẶT MỤC TIÊU - LUYỆN TẬP - TOẢ SÁNG</h1>
+      <h2 class="quote">Mỗi ngày một bước, chạm đích cùng Kitty</h2>
+      <p class="desc">
+        Mỗi buổi tập là một bước nhỏ tiến đến phiên bản khỏe đẹp và hạnh phúc hơn của chính bạn. 
+        Hello Kitty luôn ở đây để đồng hành cùng bạn trên hành trình đó - 
+        khích lệ bạn kiên trì từng ngày, lan tỏa năng lượng tích cực và tình yêu bản thân. 
+      </p>
+    </div>
+  </section>
+
+  <div class="wave"></div>
+
+
+
+
+
+<!-- 💖 FORM KHẢO SÁT -->
+  <section class="survey-section">
+    <div class="survey-card">
+      <h2>KHẢO SÁT THỂ CHẤT</h2>
+      <p>Giúp Hello Kitty hiểu rõ hơn về sức khỏe và thói quen tập luyện của bạn nhé!</p>
+
+      <form method="POST" action="{% url 'save_survey' %}">
+        {% csrf_token %}
+        <div class="form-row">
+          <label>Tuổi:</label>
+          <input type="number" name="age" required>
+        </div>
+
+        <div class="form-row">
+          <label>Giới tính:</label>
+          <select name="gender" required>
+          <option value="" disabled selected>Chọn giới tính</option>
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+          <option value="Khác">Khác</option>
+        </select>
+        </div>
+
+        <div class="form-row">
+          <label>Chiều cao (cm):</label>
+          <input type="number" name="height">
+        </div>
+
+        <div class="form-row">
+          <label>Cân nặng (kg):</label>
+          <input type="number" name="weight">
+        </div>
+
+        <div class="form-row">
+          <label>Nhịp tim trung bình (bpm):</label>
+          <input type="number" name="bpm">
+        </div>
+
+        <div class="form-row">
+          <label>Nhiệt độ cơ thể (°C):</label>
+          <input type="number" name="temperature" step="0.1">
+        </div>
+
+        <div class="form-row">
+          <label>Hiệu suất thời gian (%):</label>
+          <input type="number" name="efficiency">
+        </div>
+
+        <div class="form-row">
+          <label>Cường độ tổng (1–10):</label>
+          <input type="number" name="intensity" min="1" max="10">
+        </div>
+
+        <button type="submit">Lưu khảo sát</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>
