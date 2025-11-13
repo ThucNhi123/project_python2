@@ -49,6 +49,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
+  
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 9999; 
 }
 
 header .logo {
@@ -76,12 +81,11 @@ header h1 {
 nav a {
   font-family: "Maven Pro", sans-serif;
   color: white;
-  margin-left: 20px;
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s;
-  letter-spacing: 4.5px; 
-  margin-left: 50px;
+  letter-spacing: 4.5px;
+  padding-right: 130px; 
 }
 
 nav a:hover {
@@ -124,6 +128,78 @@ nav a {
   letter-spacing: 4px;
 }
 
+/* -------------------- POPUP ABOUT US -------------------- */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    background: rgba(246, 179, 210, 0.85);
+    backdrop-filter: blur(6px);
+    width: 75%;
+    max-width: 800px;
+    border-radius: 35px;
+    padding: 40px 20px;
+    position: relative;
+    animation: popupFade 0.3s ease-out;
+    border: 4px solid #d85a8d;
+}
+
+.popup-inner {
+    text-align: center;
+    color: #7a1c48;
+    font-family: "Maven Pro", sans-serif;
+}
+
+.popup-title {
+    font-family: "Sigmar One", sans-serif;
+    font-size: 45px;
+    margin: 0 0 10px 0;
+    color: #7a1c48;
+}
+
+.popup-desc {
+    font-size: 20px;
+    margin: 10px 0 25px 0;
+    padding: 0 30px;
+}
+
+.popup-members {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.popup-members li {
+    margin: 8px 0;
+}
+
+.kitty-left {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    width: 140px;
+}
+
+.kitty-right {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    width: 140px;
+}
+
 /* --------Hero section (inside luow song)------------ */
 .hero { 
   height: 500px;
@@ -133,7 +209,7 @@ nav a {
   padding-left: 160px; 
   position: relative;
   overflow: visible;
-  margin-top: 6px; 
+  padding-top: 100px;  
   gap: 140px; 
   z-index: 2; 
 }
@@ -230,6 +306,11 @@ nav a {
     }
 
 
+
+@keyframes popupFade {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
 
 
 
@@ -329,3 +410,63 @@ button {
 button:hover {
   background-color: #c24b6e;
 }
+
+/* 🌸 SECTION TÍNH NĂNG KITTY FITNESS */
+.features-section {
+  margin-top: 80px; 
+  padding-bottom: 120px; 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 40px; 
+  width: 100%; 
+  max-width: 1050px;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.feature-card:nth-child(4), 
+.feature-card:nth-child(5) {
+  grid-column: span 1; 
+  justify-self: center; 
+}
+
+.feature-card {
+  background: #f4a7cd; 
+  width: 280px; 
+  border-radius: 30px; 
+  padding: 20px; 
+  text-align: center; 
+  box-shadow: 0 4px 12px rgba(120, 20, 60, 0.2); 
+  color: #7a1c48; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+  cursor: pointer;
+
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.feature-card img {
+  width: 100%; 
+  border-radius: 20px; 
+}
+
+.feature-card h3 {
+  margin-top: 15px; 
+  font-family: "Singmar One", sans-serif; 
+  font-size: 1.3rem; 
+  color: #7a1c48; 
+}
+
+.feature-card p {
+  margin-top: 10px; 
+  font-size: 0.95rem; 
+  line-height: 1.4rem; 
+}
+
+.feature-card:hover {
+  transform: translateY(-6px); 
+  box-shadow: 0 6px 16px rgba(120, 20, 60, 0.3); 
+}
+/* 🌸 SECTION TÍNH NĂNG KITTY FITNESS */

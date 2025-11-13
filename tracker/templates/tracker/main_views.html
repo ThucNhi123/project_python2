@@ -4,13 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <title>🌸 Hello Kitty Fitness 🌸</title>
+  <link rel="stylesheet" href="{% static 'tracker/css/main_views.css' %}">
    <!--font Modak and DynaPuff-->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'tracker/css/main_views.css' %}">
 </head>
 <body>
+
+  <div id="aboutPopup" class="popup-overlay">
+    <div class="popup-box">
+      <div class="popup-inner">
+        <h2 class="popup-title">About us</h2>
+        <p class ="popup-desc">
+          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
+          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+        </p>
+
+        <ul class="popup-members">
+          <li>11245870 – Nguyễn Khánh Duy</li>
+          <li>11245886 – Trần Thị Nhật Khánh</li>
+          <li>11245840 – Vũ Đức Anh</li>
+          <li>11245892 – Lê Phạm Khánh Linh</li>
+          <li>11245921 – Hoàng Thục Nhi</li>
+          <li>11245899 – Vũ Trần Cát Linh</li>
+        </ul>
+        
+        <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
+        <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
+      </div>
+    </div>
+  </div>
 
   <!-- Header -->
   <header>
@@ -19,11 +43,11 @@
       <h1>Kitty Fitness</h1>
     </div>
     <nav>
-      <a href="#">Liên hệ</a>
-      <a href="#">Đăng nhập</a>
-      <a href="#">Đăng ký</a>
+      <a href="#" id="aboutBtn">About us</a>
     </nav>
   </header>
+
+
 
   <!-- Hero Section (nền hồng đậm + Kitty + chữ) -->
   
@@ -68,57 +92,151 @@
       <h2>KHẢO SÁT THỂ CHẤT</h2>
       <p>Giúp Hello Kitty hiểu rõ hơn về sức khỏe và thói quen tập luyện của bạn nhé!</p>
 
-      <form method="POST" action="{% url 'save_survey' %}">
+      <form id="surveyForm" method="POST">
         {% csrf_token %}
         <div class="form-row">
           <label>Tuổi:</label>
-          <input type="number" name="age" required>
+          <input type="number" name="age" value="{{ saved.age }}">
         </div>
 
         <div class="form-row">
           <label>Giới tính:</label>
-          <select name="gender" required>
-          <option value="" disabled selected>Chọn giới tính</option>
-          <option value="Nam">Nam</option>
-          <option value="Nữ">Nữ</option>
-          <option value="Khác">Khác</option>
-        </select>
+          <select name="gender">
+            <option value="Nam" {% if saved.gender == 'Nam' %}selected{% endif %}>Nam</option>
+            <option value="Nữ" {% if saved.gender == 'Nữ' %}selected{% endif %}>Nữ</option>
+            <option value="Khác" {% if saved.gender == 'Khác' %}selected{% endif %}>Khác</option>
+          </select>
         </div>
 
         <div class="form-row">
           <label>Chiều cao (cm):</label>
-          <input type="number" name="height">
+          <input type="number" name="height" value="{{ saved.height }}">
         </div>
 
         <div class="form-row">
           <label>Cân nặng (kg):</label>
-          <input type="number" name="weight">
+          <input type="number" name="weight" value="{{ saved.weight }}">
         </div>
 
         <div class="form-row">
           <label>Nhịp tim trung bình (bpm):</label>
-          <input type="number" name="bpm">
+          <input type="number" name="bpm" value="{{ saved.bpm }}">
         </div>
 
         <div class="form-row">
           <label>Nhiệt độ cơ thể (°C):</label>
-          <input type="number" name="temperature" step="0.1">
+          <input type="number" name="temperature" value="{{ saved.temperature }}">
         </div>
 
         <div class="form-row">
           <label>Hiệu suất thời gian (%):</label>
-          <input type="number" name="efficiency">
+          <input type="number" name="efficiency" value="{{ saved.efficiency }}">
         </div>
 
         <div class="form-row">
           <label>Cường độ tổng (1–10):</label>
-          <input type="number" name="intensity" min="1" max="10">
+          <input type="number" name="intensity" value="{{ saved.intensity }}">
         </div>
 
         <button type="submit">Lưu khảo sát</button>
       </form>
+
+      <p id="surveyMessage" style="margin-top: 15px; color: #d63384; font-weight: 600;"></p>
     </div>
   </section>
+
+<!--🌸 SECTION TÍNH NĂNG KITTY FITNESS-->
+<section class="features-section">
+  <a class="feature-card" href="{% url 'weekly_plan_generator' %}">
+    <img src="{% static 'tracker/images/card1.png' %}" alt="Kitty 1">
+    <h3>XÂY DỰNG LỊCH TẬP CÁ NHÂN</h3>
+    <p>Hello Kitty sẽ giúp tạo ra một kế hoạch tập luyện hoàn hảo cho cả tuần, 
+      vừa đủ thử thách vừa tràn đầy năng lượng 🍓<br>
+      “Plan smart – Train happy – Shine every day!”</p>
+  </a>
+
+  <a class="feature-card" href="{% url 'goal_translator' %}">
+    <img src="{% static 'tracker/images/card2.png' %}" alt="Kitty 2">
+    <h3>CHUYỂN MỤC TIÊU THÀNH HÀNH ĐỘNG</h3>
+    <p>
+      Muốn giảm cân? Tăng cơ?<br>
+      Kitty sẽ tính toán và gợi ý bạn lộ trình phù hợp 🌼<br>
+      “Dream it – Do it – Kitty got you!”
+    </p>
+  </a>
+
+  <a class="feature-card" href="{% url 'class_picker' %}">
+    <img src="{% static 'tracker/images/card3.png' %}" alt="Kitty 3">
+    <h3>KHÁM PHÁ PHONG CÁCH TẬP CỦA BẠN</h3>
+    <p>
+      Cùng Kitty chọn lớp tập phù hợp nhất - thể thao, nghệ thuật, 
+      hay ngoài trời? Mỗi buổi tâoj là một trải nghiệm mới!<br>
+      🌸 “Find your vibe - Move your way"
+    </p>
+  </a>
+  
+  <a class="feature-card" href="{% url 'what_if_coach' %}">
+    <img src="{% static 'tracker/images/card4.png' %}" alt="Kitty 4">
+    <h3>HUẤN LUYỆN VIÊN ẢO KITTY</h3>
+    <p>
+      Nhập thông tin của bạn và xem ngay số lượng calo đốt cháy dự đoán. 
+      Thử các kịch bản “Nếu tập thêm 10 phút thì sao" cùng Kitty!<br>
+      💫 “Experiment - Explore - Excel with Kitty!""
+    </p>
+  </a>
+
+  <a class="feature-card" href="{% url 'calorie_swap' %}">
+    <img src="{% static 'tracker/images/card5.png' %}" alt="Kitty 5">
+    <h3>CÂN BẰNG ĂN UỐNG VÀ TẬP LUYỆN</h3>
+    <p>
+      Bạn vừa ăn một chiếc bánh kem? Kitty giúp bạn 
+      tính ngay bài tập tương đương để “đốt" lại năng lượng ấy!<br>
+       🍓 “Eat sweet - Train neat - Stay fit!”
+    </p>
+  </a>
+</section>
+
+<script>
+  const aboutBtn = document.getElementById("aboutBtn");
+  const aboutPopup = document.getElementById("aboutPopup");
+  const popupBox = document.querySelector(".popup-box");
+
+  // mở popup
+  aboutBtn.addEventListener("click", () => {
+      aboutPopup.style.display = "flex";
+  });
+
+  // click ngoài popup để tắt
+  aboutPopup.addEventListener("click", (e) => {
+      if (!popupBox.contains(e.target)) {
+          aboutPopup.style.display = "none";
+      }
+  });
+</script>
+
+<script>
+document.getElementById("surveyForm").addEventListener("submit", async function(e) {
+    e.preventDefault();  // Ngăn reload trang
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const response = await fetch("{% url 'save_survey' %}", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+        document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
+    }
+});
+</script>
+
 
 </body>
 </html>

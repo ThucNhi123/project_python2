@@ -75,7 +75,7 @@ header h1 {
 nav a {
   font-family: "Maven Pro", sans-serif;
   color: white;
-  margin-left: 20px;
+  margin-left: 10px;
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s;
@@ -162,3 +162,4 @@ nav a:hover {
   background-color: #e66da1;
   transform: scale(1.05);
 }
+

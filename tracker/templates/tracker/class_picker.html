@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>🌸 Hello Kitty Fitness 🌸</title>
+  <link rel="stylesheet" href="{% static 'tracker/css/class_picker.css' %}">
+   <!--font Modak and DynaPuff-->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="aboutPopup" class="popup-overlay">
+    <div class="popup-box">
+      <div class="popup-inner">
+        <h2 class="popup-title">About us</h2>
+        <p class ="popup-desc">
+          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
+          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+        </p>
+
+        <ul class="popup-members">
+          <li>11245870 – Nguyễn Khánh Duy</li>
+          <li>11245886 – Trần Thị Nhật Khánh</li>
+          <li>11245840 – Vũ Đức Anh</li>
+          <li>11245892 – Lê Phạm Khánh Linh</li>
+          <li>11245921 – Hoàng Thục Nhi</li>
+          <li>11245899 – Vũ Trần Cát Linh</li>
+        </ul>
+        
+        <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
+        <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src= {% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
+      <h1>Kitty Fitness</h1>
+    </div>
+    <nav>
+      <a href="#" id="aboutBtn">About us</a>
+    </nav>
+  </header>
+
+
+<!--Sửa ở đây-->
+
+  <script>
+  const aboutBtn = document.getElementById("aboutBtn");
+  const aboutPopup = document.getElementById("aboutPopup");
+  const popupBox = document.querySelector(".popup-box");
+
+  // mở popup
+  aboutBtn.addEventListener("click", () => {
+      aboutPopup.style.display = "flex";
+  });
+
+  // click ngoài popup để tắt
+  aboutPopup.addEventListener("click", (e) => {
+      if (!popupBox.contains(e.target)) {
+          aboutPopup.style.display = "none";
+      }
+  });
+</script>
+
+<script>
+document.getElementById("surveyForm").addEventListener("submit", async function(e) {
+    e.preventDefault();  // Ngăn reload trang
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const response = await fetch("{% url 'save_survey' %}", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+        document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
+    }
+});
+</script>
+
+</body>
+</html>
