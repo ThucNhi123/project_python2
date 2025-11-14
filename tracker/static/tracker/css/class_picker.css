@@ -144,7 +144,7 @@ nav a {
 }
 
 .popup-box {
-    background: rgba(246, 179, 210, 0.85);
+    background: #f4a7cd;
     backdrop-filter: blur(6px);
     width: 75%;
     max-width: 800px;

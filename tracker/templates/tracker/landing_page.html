@@ -15,6 +15,30 @@
 
 
 <body>
+
+  <div id="aboutPopup" class="popup-overlay">
+    <div class="popup-box">
+      <div class="popup-inner">
+        <h2 class="popup-title">About us</h2>
+        <p class ="popup-desc">
+          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
+          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+        </p>
+
+        <ul class="popup-members">
+          <li>11245870 – Nguyễn Khánh Duy</li>
+          <li>11245886 – Trần Thị Nhật Khánh</li>
+          <li>11245840 – Vũ Đức Anh</li>
+          <li>11245892 – Lê Phạm Khánh Linh</li>
+          <li>11245921 – Hoàng Thục Nhi</li>
+          <li>11245899 – Vũ Trần Cát Linh</li>
+        </ul>
+        
+        <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
+        <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
+      </div>
+    </div>
+  </div>
   <!-- Header -->
   <header>
     <div class="logo">
@@ -22,7 +46,7 @@
       <h1>Kitty Fitness</h1>
     </div>
     <nav>
-      <a href="#">About us</a>
+      <a href="#" id="aboutBtn">About us</a>
     </nav>
   </header>
 
@@ -45,6 +69,25 @@
       <button class="cta-btn" onclick="window.location.href='{% url 'main_views' %}'">Bắt đầu ngay</button>
     </div>
   </section>
+
+
+  <script>
+  const aboutBtn = document.getElementById("aboutBtn");
+  const aboutPopup = document.getElementById("aboutPopup");
+  const popupBox = document.querySelector(".popup-box");
+
+  // mở popup
+  aboutBtn.addEventListener("click", () => {
+      aboutPopup.style.display = "flex";
+  });
+
+  // click ngoài popup để tắt
+  aboutPopup.addEventListener("click", (e) => {
+      if (!popupBox.contains(e.target)) {
+          aboutPopup.style.display = "none";
+      }
+  });
+</script>
 
 </body>
 </html>

@@ -10,6 +10,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
   <div id="aboutPopup" class="popup-overlay">
@@ -146,55 +147,62 @@
   </section>
 
 <!--🌸 SECTION TÍNH NĂNG KITTY FITNESS-->
+
 <section class="features-section">
-  <a class="feature-card" href="{% url 'weekly_plan_generator' %}">
-    <img src="{% static 'tracker/images/card1.png' %}" alt="Kitty 1">
-    <h3>XÂY DỰNG LỊCH TẬP CÁ NHÂN</h3>
-    <p>Hello Kitty sẽ giúp tạo ra một kế hoạch tập luyện hoàn hảo cho cả tuần, 
-      vừa đủ thử thách vừa tràn đầy năng lượng 🍓<br>
-      “Plan smart – Train happy – Shine every day!”</p>
-  </a>
+  <!--hàng 1-->
+  <div class="features-row row-1">
+    <a class="feature-card" href="{% url 'weekly_plan_generator' %}">
+      <img src="{% static 'tracker/images/card1.png' %}" alt="Kitty 1">
+      <h3>XÂY DỰNG LỊCH TẬP CÁ NHÂN</h3>
+      <p>Hello Kitty sẽ giúp tạo ra một kế hoạch tập luyện hoàn hảo cho cả tuần, 
+        vừa đủ thử thách vừa tràn đầy năng lượng <br>
+        🍓“Plan smart – Train happy – Shine every day!”</p>
+    </a>
 
-  <a class="feature-card" href="{% url 'goal_translator' %}">
-    <img src="{% static 'tracker/images/card2.png' %}" alt="Kitty 2">
-    <h3>CHUYỂN MỤC TIÊU THÀNH HÀNH ĐỘNG</h3>
-    <p>
-      Muốn giảm cân? Tăng cơ?<br>
-      Kitty sẽ tính toán và gợi ý bạn lộ trình phù hợp 🌼<br>
-      “Dream it – Do it – Kitty got you!”
-    </p>
-  </a>
+    <a class="feature-card" href="{% url 'goal_translator' %}">
+      <img src="{% static 'tracker/images/card2.png' %}" alt="Kitty 2">
+      <h3>CHUYỂN MỤC TIÊU THÀNH HÀNH ĐỘNG</h3>
+      <p>
+        Muốn giảm cân? Tăng cơ?<br>
+        Kitty sẽ tính toán và gợi ý bạn lộ trình phù hợp <br>
+        🌼“Dream it – Do it – Kitty got you!”
+      </p>
+    </a>
 
-  <a class="feature-card" href="{% url 'class_picker' %}">
-    <img src="{% static 'tracker/images/card3.png' %}" alt="Kitty 3">
-    <h3>KHÁM PHÁ PHONG CÁCH TẬP CỦA BẠN</h3>
-    <p>
-      Cùng Kitty chọn lớp tập phù hợp nhất - thể thao, nghệ thuật, 
-      hay ngoài trời? Mỗi buổi tâoj là một trải nghiệm mới!<br>
-      🌸 “Find your vibe - Move your way"
-    </p>
-  </a>
-  
-  <a class="feature-card" href="{% url 'what_if_coach' %}">
-    <img src="{% static 'tracker/images/card4.png' %}" alt="Kitty 4">
-    <h3>HUẤN LUYỆN VIÊN ẢO KITTY</h3>
-    <p>
-      Nhập thông tin của bạn và xem ngay số lượng calo đốt cháy dự đoán. 
-      Thử các kịch bản “Nếu tập thêm 10 phút thì sao" cùng Kitty!<br>
-      💫 “Experiment - Explore - Excel with Kitty!""
-    </p>
-  </a>
+    <a class="feature-card" href="{% url 'class_picker' %}">
+      <img src="{% static 'tracker/images/card3.png' %}" alt="Kitty 3">
+      <h3>KHÁM PHÁ PHONG CÁCH TẬP CỦA BẠN</h3>
+      <p>
+        Cùng Kitty chọn lớp tập phù hợp nhất - thể thao, nghệ thuật, 
+        hay ngoài trời? Mỗi buổi tâoj là một trải nghiệm mới!<br>
+        🌸 “Find your vibe - Move your way"
+      </p>
+    </a>
+  </div>
+  <!--hàng 2-->
+  <div class="features-row row-2">
+    <a class="feature-card" href="{% url 'what_if_coach' %}">
+      <img src="{% static 'tracker/images/card4.png' %}" alt="Kitty 4">
+      <h3>HUẤN LUYỆN VIÊN ẢO KITTY</h3>
+      <p>
+        Nhập thông tin của bạn và xem ngay số lượng calo đốt cháy dự đoán. 
+        Thử các kịch bản “Nếu tập thêm 10 phút thì sao" cùng Kitty!<br>
+        💫 “Experiment - Explore - Excel with Kitty!""
+      </p>
+    </a>
 
-  <a class="feature-card" href="{% url 'calorie_swap' %}">
-    <img src="{% static 'tracker/images/card5.png' %}" alt="Kitty 5">
-    <h3>CÂN BẰNG ĂN UỐNG VÀ TẬP LUYỆN</h3>
-    <p>
-      Bạn vừa ăn một chiếc bánh kem? Kitty giúp bạn 
-      tính ngay bài tập tương đương để “đốt" lại năng lượng ấy!<br>
-       🍓 “Eat sweet - Train neat - Stay fit!”
-    </p>
-  </a>
+    <a class="feature-card" href="{% url 'calorie_swap' %}">
+      <img src="{% static 'tracker/images/card5.png' %}" alt="Kitty 5">
+      <h3>CÂN BẰNG ĂN UỐNG VÀ TẬP LUYỆN</h3>
+      <p>
+        Bạn vừa ăn một chiếc bánh kem? Kitty giúp bạn 
+        tính ngay bài tập tương đương để “đốt" lại năng lượng ấy!<br>
+        🍓 “Eat sweet - Train neat - Stay fit!”
+      </p>
+    </a>
+  </div>
 </section>
+
 
 <script>
   const aboutBtn = document.getElementById("aboutBtn");
