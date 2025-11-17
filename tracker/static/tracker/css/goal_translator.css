@@ -31,6 +31,12 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 /*-------font Modak and DynaPuff-------*/
 
 body {
@@ -202,4 +208,214 @@ nav a {
     width: 140px;
 }
 
+/* ================== GOAL TRANSLATOR ================== */
+.container {
+  width: 80%; 
+  max-width: 900px; 
+  margin: 0 auto; 
+  padding: 40px 20px;  
+}
+.section-title {
+  font-family: "Alfa Slab One", serif;
+  font-size: 30px;
+  color: #943055;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  margin-top: 110px;
+  padding-bottom: 20px;
+  position: relative;
+}
 
+.section-title::before {
+font-size: 28px;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: #c2436b;   
+}
+
+/* INPUT ROW */
+.input-row {
+display: flex;
+align-items: center;
+gap: 0;
+margin-bottom: 25px;
+}
+
+
+.input-row label,
+.container > label,
+#intensitySection > label {
+    width: 300px;
+    font-size: 23px;
+    font-weight: 100;
+    font-family: "Maven Pro", sans-serif;
+    color: #7a1c48;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-align: left;
+    margin-right: 20px;
+}
+
+
+.input-row input,
+.input-row select {
+  width: 600px;
+  height: 48px; 
+  padding: 0 18px;
+  background: #f187ac;
+  border-radius: 25px;
+  font-size: 18px;
+  border: none; 
+  outline: none; 
+  font-family: "Maven Pro", sans-serif;
+
+  box-sizing: border-box;
+  appearance: none; 
+  color: white; 
+}
+
+
+/* Ô CHỌN NGÀY dạng pill */
+.day-buttons,
+.intensity-buttons {
+  width: 600px; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));  
+  gap: 12px; 
+  justify-content: flex-start;
+}
+
+.day-row {
+  align-items: flex-start;  
+}
+
+.day-btn {
+  width: 101px; 
+  text-align: center;
+  color: white; 
+  padding: 10px 16px;
+  border-radius: 25px;
+  background: #f187ac;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid transparent;
+}
+
+.day-btn.active-day {
+  background: #ff99cc;
+  color: white;
+  border-color: #ff4da6;
+  font-weight: 700;
+}
+
+
+.day-btn:hover {
+background: #ff78ba;
+transform: scale(1.05);
+}
+
+
+/* NÚT TẠO NGAY */
+.create-btn {
+display: block;
+margin: 35px auto 0;
+padding: 15px 55px;
+font-size: 22px;
+font-family: "Maven Pro", sans-serif;
+font-weight: 800;
+background: #d45a86;
+color: #ffe5ec;
+border: none;
+border-radius: 28px;
+cursor: pointer;
+transition: 0.25s;
+box-shadow: 0 5px 0 #8d3550;
+}
+
+
+.create-btn:hover {
+background: #b2476f;
+transform: translateY(-3px);
+}
+
+.create-line-bottom {
+    width: 100%;
+    max-width: 900px;
+    height: 4px;
+    background: #c2436b;
+    border-radius: 4px;
+    margin: 25px 0 40px;   /* cách nút một chút cho đẹp */
+}
+
+.table-title {
+  font-family: "Alfa Slab One", serif;
+  font-size: 30px;
+  color: #943055;
+  align-items: center;
+  gap: 10px;
+  display: block; 
+  text-align: center;
+}
+
+
+
+/* BẢNG KẾ HOẠCH 7 NGÀY */
+table {
+width: 1200px;
+margin: 45px auto;  
+border-collapse: separate;
+border-spacing: 12px 10px;
+margin-top: -5px;
+}
+
+
+th {
+background: #d3457b;
+color: white;
+font-size: 17px;
+padding: 15px;
+border-radius: 20px;
+font-family: "Maven Pro", sans-serif;
+font-weight: 600;
+}
+
+
+td {
+background: #f8d1e2;
+padding: 14px;
+border-radius: 18px;
+border: 2px solid #d489a7;
+text-align: center;
+font-size: 16px;
+}
+
+.reload-btn {
+  display: block;
+  margin: 35px auto 0;
+  padding: 15px 55px;
+  font-size: 22px;
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 800;
+  background: #d45a86;
+  color: #ffe5ec;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 5px 0 #8d3550;
+}
+
+.reload-btn:hover {
+    background: #cc5787;
+    transform: translateY(-3px);
+}

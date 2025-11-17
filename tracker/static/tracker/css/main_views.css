@@ -413,6 +413,18 @@ button:hover {
   background-color: #c24b6e;
 }
 
+.survey-success-msg {
+    margin-top: 15px;
+    font-size: 30px;
+    color: #d84c8b;  
+    font-family: "Maven Pro", sans-serif; 
+    text-align: center;
+    display: none; /* ban đầu ẩn */
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+    font-weight: 800;
+}
+
 /* 🌸 SECTION TÍNH NĂNG KITTY FITNESS */
 .features-section {
   width: 100%; 

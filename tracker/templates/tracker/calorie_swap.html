@@ -8,9 +8,23 @@
    <!--font Modak and DynaPuff-->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- POPUP KẾT QUẢ -->
+  <div id="resultPopup" class="result-popup-overlay" style="display:none;">
+    <div class="result-popup-box">
+      <h2 class="result-popup-title">🎀 Hoạt động cần hoàn thành</h2>
+
+      <p class="result-line1" id="popupCalories">0 kcal</p>
+      <p class="result-line" id="popupSummaryText">...</p>
+      <p class="warning-text" id="popupWarning"></p>
+
+      <button id="closeResultPopup" class="close-btn">Đóng</button>
+    </div>
+  </div>
+
+
 
   <div id="aboutPopup" class="popup-overlay">
     <div class="popup-box">
@@ -36,6 +50,27 @@
     </div>
   </div>
 
+  <script>
+  const userProfile = {
+    age: "{{ profile.age|default:0 }}",
+    sex: "{{ profile.sex|default:'' }}",
+    height: "{{ profile.height|default:0 }}",
+    weight: "{{ profile.weight|default:0 }}",
+    heart_rate: "{{ profile.heart_rate|default:0 }}",
+    body_temp: "{{ profile.body_temp|default:37 }}",
+    efficiency: "{{ profile.efficiency|default:0 }}",
+    intensity: "{{ profile.intensity|default:0 }}"
+  };
+  </script>
+
+  {% if not profile %}
+  <script>
+  alert("Bạn chưa nhập khảo sát thể chất! Vui lòng hoàn thành trước khi sử dụng tính năng này 💗");
+  window.location.href = "/khao-sat/";
+  </script>
+  {% endif %}
+
+
   <!-- Header -->
   <header>
     <div class="logo">
@@ -47,9 +82,50 @@
     </nav>
   </header>
 
-  <!--Sửa ở đây-->
+  <div class="wave-divider"></div>
 
-  <script>
+    <main class="swap-main-content">
+      <div class="swap-header">
+        <h2 class="swap-title">
+            Đổi món ăn yêu thích sang bài tập tương ứng 🍔 🔄 🏃‍♀️
+        </h2>
+        <p class="swap-subtitle">
+          Bạn vừa ăn một chiếc bánh kem? Cùng Kitty xem bạn phải tập bao lâu
+          để cân bằng lại nhé!
+        </p>
+        <div class="swap-divider"></div>
+      </div>
+
+        <div class="swap-container">
+          
+            <section class="swap-input-block food-block">
+                <form id="swapAlgorithmForm" class="input-form">
+                    {% csrf_token %} 
+                    <div class="form-group">
+                        <label for="food_name">Tên món ăn:</label>
+                        <input type="text" id="food_name" name="food_name" required placeholder="Ví dụ: Bánh mì kẹp thịt">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Số lượng:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" required placeholder="Ví dụ: 1 phần">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="max_duration">Thời gian tập tối đa (phút):</label>
+                        <input type="number" id="max_duration" name="max_duration" min="1" max="180" required placeholder="Ví dụ: 60">
+                    </div>
+
+                    <button type="submit" id="calculateSwapBtn" class="swap-btn dynapuff">
+                        Tính ngay
+                    </button>
+                </form>
+
+              </section>
+        </div>
+    </main>
+
+<script>
   const aboutBtn = document.getElementById("aboutBtn");
   const aboutPopup = document.getElementById("aboutPopup");
   const popupBox = document.querySelector(".popup-box");
@@ -65,6 +141,49 @@
           aboutPopup.style.display = "none";
       }
   });
+</script>
+
+<script>
+  document.getElementById("swapAlgorithmForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const foodName = document.getElementById("food_name").value;
+    const quantity = Number(document.getElementById("quantity").value);
+    const maxDuration = Number(document.getElementById("max_duration").value);
+
+    const foodKcal = quantity * 250;
+
+    const payload = new FormData();
+    payload.append("food_kcal", foodKcal);
+    payload.append("age", userProfile.age);
+    payload.append("sex", userProfile.sex);
+    payload.append("height", userProfile.height);
+    payload.append("weight", userProfile.weight);
+    payload.append("heart_rate", userProfile.heart_rate);
+    payload.append("body_temp", userProfile.body_temp);
+    payload.append("max_min", maxDuration);
+
+    const response = await fetch("{% url 'api_swap_calorie' %}", {
+        method: "POST",
+        body: payload,
+        headers: { "X-CSRFToken": csrftoken }
+    });
+
+    const data = await response.json();
+
+    // ghi vào popup
+    document.getElementById("popupCalories").innerText = `${foodKcal} kcal`;
+
+    const bpm = userProfile.heart_rate;
+
+    document.getElementById("popupSummaryText").innerText =
+      `Để đốt ${foodKcal} kcal từ ${quantity} × ${foodName}, bạn cần ${data.required_minutes} phút ở ${bpm} bpm.`;
+
+
+
+    // mở popup
+    document.getElementById("resultPopup").style.display = "flex";
+});
 </script>
 
 <script>
@@ -88,6 +207,30 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
         document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
     }
 });
+</script>
+
+<script>
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+</script>
+
+<script>
+  document.getElementById("closeResultPopup").addEventListener("click", function() {
+    document.getElementById("resultPopup").style.display = "none";
+  });
 </script>
 
 </body>

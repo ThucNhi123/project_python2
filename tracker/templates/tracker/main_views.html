@@ -94,55 +94,59 @@
       <p>Hãy nhập một số thông tin cơ bản để giúp Hello Kitty hiểu rõ hơn về sức khỏe và thói quen tập luyện của bạn nhé!</p>
 
       <form id="surveyForm" method="POST">
-        {% csrf_token %}
-        <div class="form-row">
-          <label>Tuổi:</label>
-          <input type="number" name="age" value="{{ saved.age }}">
-        </div>
+          {% csrf_token %}
 
-        <div class="form-row">
-          <label>Giới tính:</label>
-          <select name="gender">
-            <option value="Nam" {% if saved.gender == 'Nam' %}selected{% endif %}>Nam</option>
-            <option value="Nữ" {% if saved.gender == 'Nữ' %}selected{% endif %}>Nữ</option>
-            <option value="Khác" {% if saved.gender == 'Khác' %}selected{% endif %}>Khác</option>
-          </select>
-        </div>
+          <div class="form-row">
+            <label>Tuổi:</label>
+            <input type="number" name="age" value="{{ profile.age|default:'' }}" required>
+          </div>
 
-        <div class="form-row">
-          <label>Chiều cao (cm):</label>
-          <input type="number" name="height" value="{{ saved.height }}">
-        </div>
+          <div class="form-row">
+            <label>Giới tính:</label>
+            <select name="sex" required>
+              <option value="Nam" {% if profile.sex == 'Nam' %}selected{% endif %}>Nam</option>
+              <option value="Nữ" {% if profile.sex == 'Nữ' %}selected{% endif %}>Nữ</option>
+              <option value="Khác" {% if profile.sex == 'Khác' %}selected{% endif %}>Khác</option>
+            </select>
+          </div>
 
-        <div class="form-row">
-          <label>Cân nặng (kg):</label>
-          <input type="number" name="weight" value="{{ saved.weight }}">
-        </div>
+          <div class="form-row">
+            <label>Chiều cao (cm):</label>
+            <input type="number" name="height" value="{{ profile.height|default:'' }}" required>
+          </div>
 
-        <div class="form-row">
-          <label>Nhịp tim trung bình (bpm):</label>
-          <input type="number" name="bpm" value="{{ saved.bpm }}">
-        </div>
+          <div class="form-row">
+            <label>Cân nặng (kg):</label>
+            <input type="number" name="weight" value="{{ profile.weight|default:'' }}" required>
+          </div>
 
-        <div class="form-row">
-          <label>Nhiệt độ cơ thể (°C):</label>
-          <input type="number" name="temperature" value="{{ saved.temperature }}">
-        </div>
+          <div class="form-row">
+            <label>Nhịp tim trung bình (bpm):</label>
+            <input type="number" name="heart_rate" value="{{ profile.heart_rate|default:'' }}" required>
+          </div>
 
-        <div class="form-row">
-          <label>Hiệu suất thời gian (%):</label>
-          <input type="number" name="efficiency" value="{{ saved.efficiency }}">
-        </div>
+          <div class="form-row">
+            <label>Nhiệt độ cơ thể (°C):</label>
+            <input type="number" name="body_temp" value="{{ profile.body_temp|default:'' }}" required>
+          </div>
 
-        <div class="form-row">
-          <label>Cường độ tổng (1–10):</label>
-          <input type="number" name="intensity" value="{{ saved.intensity }}">
-        </div>
+          <div class="form-row">
+            <label>Hiệu suất thời gian (%):</label>
+            <input type="number" name="efficiency" value="{{ profile.efficiency|default:'' }}" required>
+          </div>
 
-        <button type="submit">Lưu khảo sát</button>
+          <div class="form-row">
+            <label>Cường độ tổng (1–10):</label>
+            <input type="number" name="intensity" value="{{ profile.intensity|default:'' }}" required>
+          </div>
+
+          <button type="submit">Lưu khảo sát</button>
       </form>
 
-      <p id="surveyMessage" style="margin-top: 15px; color: #d63384; font-weight: 600;"></p>
+      <p id="surveyMessage" class="survey-success-msg" style="display:none; opacity: 0;">
+        💖 Cảm ơn bạn đã cho chúng tôi biết thêm thông tin sức khỏe cá nhân của bạn!
+      </p>
+    
     </div>
   </section>
 
@@ -153,7 +157,7 @@
   <div class="features-row row-1">
     <a class="feature-card" href="{% url 'weekly_plan_generator' %}">
       <img src="{% static 'tracker/images/card1.png' %}" alt="Kitty 1">
-      <h3>XÂY DỰNG LỊCH TẬP CÁ NHÂN</h3>
+      <h3>LỊCH TẬP THEO MỤC TIÊU CALO</h3>
       <p>Hello Kitty sẽ giúp tạo ra một kế hoạch tập luyện hoàn hảo cho cả tuần, 
         vừa đủ thử thách vừa tràn đầy năng lượng <br>
         🍓“Plan smart – Train happy – Shine every day!”</p>
@@ -224,23 +228,26 @@
 
 <script>
 document.getElementById("surveyForm").addEventListener("submit", async function(e) {
-    e.preventDefault();  // Ngăn reload trang
-
+    e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
 
-    const response = await fetch("{% url 'save_survey' %}", {
+    const response = await fetch("/api/save-survey/", {
         method: "POST",
         body: formData,
-        headers: {
-            "X-Requested-With": "XMLHttpRequest"
-        }
+        headers: { "X-Requested-With": "XMLHttpRequest" }
     });
 
     const result = await response.json();
-
     if (result.status === "success") {
-        document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
+      const msg = document.getElementById("surveyMessage");
+      msg.style.display = "block";
+      msg.style.opacity=0; 
+
+      setTimeout(() => {
+            msg.style.transition = "opacity 0.6s";
+            msg.style.opacity = 1;
+        }, 30);
     }
 });
 </script>

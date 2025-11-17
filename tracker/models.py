@@ -1,15 +1,16 @@
 from django.db import models
 
-# Create your models here.
-class Survey(models.Model):
+class UserProfile(models.Model):
+    session_key = models.CharField(max_length=40, unique=True)
+    
     age = models.IntegerField()
-    gender = models.CharField(max_length=20)
+    sex = models.CharField(max_length=10)
     height = models.FloatField()
     weight = models.FloatField()
-    bpm = models.IntegerField()
-    temperature = models.FloatField()
+    heart_rate = models.FloatField()
+    body_temp = models.FloatField()
     efficiency = models.FloatField()
     intensity = models.IntegerField()
 
     def __str__(self):
-        return f"Survey of {self.gender} - {self.age} tuổi"
+        return f"Profile {self.session_key}"

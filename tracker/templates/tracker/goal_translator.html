@@ -8,9 +8,26 @@
    <!--font Modak and DynaPuff-->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie("csrftoken");
+  </script>
 
   <div id="aboutPopup" class="popup-overlay">
     <div class="popup-box">
@@ -48,7 +65,81 @@
   </header>
 
   <!--Sửa ở đây-->
+  <div class="container">
+    <h2 class="section-title">🎯 Lịch tập xây dựng theo mục tiêu cân nặng</h2>
 
+    <div class="input-row">
+        <label>Bạn muốn thay đổi bao nhiêu cân (kg):</label>
+        <input type="number" id="inputWeight" placeholder="Nhập số kg bạn muốn giảm trong một tuần">
+    </div>
+
+    <div class="input-row">
+        <label>Số giờ tối đa mỗi ngày:</label>
+        <input type="number" id="inputHours" placeholder="Nhập số giờ tối đa cho một ngày tập cuản bạn">
+    </div>
+
+    <div class="input-row">
+        <label>Chia buổi tập:</label>
+        <select id="splitMode">
+            <option value="equal">Equal</option>
+            <option value="pyramid">Pyramid</option>
+        </select>
+    </div>
+
+    <div class="input-row day-row">
+      <label>Chọn ngày tập:</label>
+      <div class="day-buttons" id="freeDays">
+          <div class="day-btn">Thứ 2</div>
+          <div class="day-btn">Thứ 3</div>
+          <div class="day-btn">Thứ 4</div>
+          <div class="day-btn">Thứ 5</div>
+          <div class="day-btn">Thứ 6</div>
+          <div class="day-btn">Thứ 7</div>
+          <div class="day-btn">Chủ nhật</div>
+      </div>
+    </div>
+
+    <div id="intensitySection" style="display:none;">
+      <div class="input-row day-row">
+        <label>Ngày có cường độ cao nhất:</label>
+        <div class="intensity-buttons">
+          <div class="day-btn">Thứ 2</div>
+          <div class="day-btn">Thứ 3</div>
+          <div class="day-btn">Thứ 4</div>
+          <div class="day-btn">Thứ 5</div>
+          <div class="day-btn">Thứ 6</div>
+          <div class="day-btn">Thứ 7</div>
+          <div class="day-btn">Chủ nhật</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="create-btn">Tạo ngay</button>
+    <div class="create-line-bottom"></div>
+  </div>
+
+  <div id="weeklyPlanWrapper" style="display:none;">
+    <h3 class="table-title">Kế hoạch luyện tập 7 ngày</h3>
+    <table>
+      <tr>
+        <th>Ngày</th>
+        <th>Mục tiêu (kcal)</th>
+        <th>Thời lượng gợi ý</th>
+        <th>Gợi ý nhịp tim</th>
+        <th>Kcal ước tính</th>
+        <th>Khả thi</th>
+        <th>Ghi chú</th>
+      </tr>
+      <tr>
+        <td>Thứ 2</td><td>1750</td><td>45 phút</td><td>180 bpm</td><td>1646.7 kcal</td><td>Không</td><td>Không đạt</td>
+      </tr>
+    </table>
+    
+    <!--nút reload trang-->
+    <button class="reload-btn" onclick="location.reload();">Tạo lại</button>
+  </div>
+
+  <!--Popup ABOUT US-->
   <script>
   const aboutBtn = document.getElementById("aboutBtn");
   const aboutPopup = document.getElementById("aboutPopup");
@@ -90,5 +181,124 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
 });
 </script>
 
+<!--Ẩn hiện ngày rảnh-->
+  <script>
+    // Toggle ngày rảnh
+    document.querySelectorAll("#freeDays .day-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            btn.classList.toggle("active-day");
+        });
+    });
+
+    // Toggle ngày cường độ cao nhất (chọn 1 ngày duy nhất)
+    document.querySelectorAll(".intensity-buttons .day-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".intensity-buttons .day-btn")
+                .forEach(b => b.classList.remove("active-day"));
+            btn.classList.add("active-day");
+        });
+    });
+
+    // Hiện/ẩn mục intensity khi chọn pyramid
+    document.getElementById("splitMode").addEventListener("change", function () {
+        const mode = this.value;
+        const section = document.getElementById("intensitySection");
+
+        if (mode === "pyramid") {
+            section.style.display = "block";
+        } else {
+            section.style.display = "none";
+            // xóa chọn cũ
+            document.querySelectorAll(".intensity-buttons .day-btn")
+                    .forEach(b => b.classList.remove("active-day"));
+        }
+    });
+  </script>
+
+  <script>
+  document.querySelector(".create-btn").addEventListener("click", async () => {
+
+    // ====== LẤY INPUT ======
+    const cal = document.getElementById("inputWeight").value.trim();
+    const hours = document.getElementById("inputHours").value.trim();
+    const mode = document.getElementById("splitMode").value;
+
+    const freeDays = [...document.querySelectorAll("#freeDays .day-btn.active-day")]
+        .map(btn => btn.innerText.trim());
+
+    const intensityDays = [...document.querySelectorAll(".intensity-buttons .day-btn.active-day")]
+        .map(btn => btn.innerText.trim());
+
+    // ====== VALIDATE ======
+    if (!cal) { alert("⚠️ Vui lòng nhập số calo cần đốt!"); return; }
+    if (!hours) { alert("⚠️ Vui lòng nhập số giờ tối đa mỗi ngày!"); return; }
+    if (freeDays.length === 0) { alert("⚠️ Chọn ít nhất 1 ngày rảnh!"); return; }
+    if (mode === "pyramid" && intensityDays.length === 0) {
+        alert("⚠️ Chọn ngày cường độ cao nhất!");
+        return;
+    }
+
+    // peak day
+    let peakDay = null;
+    if (mode === "pyramid") {
+        peakDay = intensityDays[0];
+    }
+
+    // ====== GỌI API BACKEND ======
+    const response = await fetch("/api/goal-translator/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRFToken": csrftoken
+        },
+        body: JSON.stringify({
+            weeklyTarget: cal,
+            maxHours: hours,
+            freeDays,
+            splitMode: mode,
+            peakDay
+        })
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+        renderTable(result.plan);
+        document.getElementById("weeklyPlanWrapper").style.display = "block";
+    } else {
+        alert("❌ Lỗi khi tạo kế hoạch!");
+    }
+  });
+  </script>
+
+  <script>
+function renderTable(plan) {
+
+    // xoá dữ liệu cũ
+    const table = document.querySelector("#weeklyPlanWrapper table");
+    table.innerHTML = `
+        <tr>
+            <th>Ngày</th><th>Mục tiêu</th><th>Thời lượng</th>
+            <th>Nhịp tim</th><th>Kcal</th><th>Khả thi</th><th>Note</th>
+        </tr>
+    `;
+
+    // render bảng mới
+    plan.forEach(row => {
+        table.innerHTML += `
+            <tr>
+                <td>${row.Day}</td>
+                <td>${row.Target_kcal}</td>
+                <td>${row.Suggest_Duration_min} phút</td>
+                <td>${row.Suggest_HR_bpm} bpm</td>
+                <td>${row.Est_kcal}</td>
+                <td>${row.Feasible}</td>
+                <td>${row.Note}</td>
+            </tr>
+        `;
+    });
+}
+</script>
 </body>
 </html>

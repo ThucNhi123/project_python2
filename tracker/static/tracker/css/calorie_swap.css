@@ -31,9 +31,16 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 /*-------font Modak and DynaPuff-------*/
 
 body {
+  padding-top: 120px; 
   margin: 0;
   font-family: "Maven Pro", sans-serif;
   background-color: #ffd6eb;
@@ -203,3 +210,282 @@ nav a {
 }
 
 
+/* -------------------- COACH MAIN CONTENT -------------------- */
+.swap-main-content {
+    width: 100%; 
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+.swap-header {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 10px auto;
+    text-align: left;
+    padding: 40px 20px;
+}
+
+.swap-title {
+    font-family: "Alfa Slab One", serif;
+    font-size: 30px;
+    color: #7a1c48;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.swap-subtitle {
+    margin-top: 8px;
+    font-size: 22px;
+    font-family: "Maven Pro", sans-serif;
+    color: #7a1c48;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.swap-divider {
+    margin-top: 25px;
+    height: 4px;
+    width: 100%;
+    background-color: #b05672;
+    border-radius: 10px;
+}
+
+/* --- Input block --- */
+.swap-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto; 
+    padding: 30px 0;
+    border-radius: 25px;
+    gap: 40px;
+    display: flex; 
+    flex-direction: column;
+}
+
+.swap-input-block {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: none;
+    padding-top: 10px;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: center;
+    gap: 40px;
+    padding-left: 10px;
+
+}
+
+.form-group label {
+    width: 300px; 
+    font-family: "Maven Pro", sans-serif;
+    font-size: 23px;
+    color: #7a1c48;
+    text-align: left;
+    letter-spacing: 0.5px;
+    margin-right: 20px;
+    line-height: 1.4;
+    font-weight: 100;
+}
+
+.form-group input {
+    width: 600px;
+    height: 48px;
+    padding: 0 18px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: #f187ac;
+    color: white;
+    font-family: "Maven Pro", sans-serif;
+    box-sizing: border-box;
+    appearance: none;
+}
+
+.form-group input::placeholder {
+    color: #ffddea;
+    opacity: 0.9;
+
+}
+
+/* --- Nút Tính toán --- */
+.swap-btn {
+    font-family: "Maven Pro", sans-serif;
+    font-weight: 700;
+    margin-top: 20px;
+    width: 208px;
+    padding: 16px 20px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 35px;
+    background: #c95178;
+    color: #ffe5ec;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 5px 0 #8d3550;
+    transition: 0.2s;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swap-btn:hover {
+    background: #e86ca1;
+}
+
+.swap-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #8d3550;
+}
+
+/* ========================================= */
+/*             RESULT — LEFT VALUE           */
+/* ========================================= */
+.swap-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.algorithm-result-box {
+    text-align: center;
+}
+
+.result-value {
+    font-size: 3rem;
+    font-family: "Modak", system-ui;
+    color: #c2436b;
+}
+
+/* ========================================= */
+/*             RIGHT RESULT BLOCK            */
+/* ========================================= */
+.activity-block {
+    padding: 30px;
+    text-align: center;
+}
+
+.block-title {
+    font-family: "Alfa Slab One", serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #943055;
+}
+
+.block-icon {
+    width: 80px;
+    margin: 10px 0 20px;
+}
+
+.display-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.display-data {
+    font-size: 2rem;
+    color: #b23a6b;
+    margin-bottom: 10px;
+}
+
+.time-data {
+    font-size: 2.4rem;
+}
+
+/* ========================================= */
+/*                 WARNING                   */
+/* ========================================= */
+.warning-label {
+    color: #ae1f52;
+    font-weight: bold;
+    margin-top: 15px;
+}
+/* Popup kết quả */
+.result-box {
+  width: 380px;
+  background: #ffe6f2;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  position: relative;
+  font-family: "Maven Pro", sans-serif;
+}
+
+.result-line {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #c24b6e;
+  font-weight: 600;
+}
+
+.warning-text {
+  color: #d9534f;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  background: #ff7aa2;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.close-btn:hover {
+  background: #ff4f8a;
+}
+
+
+/* ========================================= */
+/*                   POPUP                   */
+/* ========================================= */
+.result-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000; /* lớn hơn About Us */
+}
+.result-popup-title {
+    font-family: "Sigmar One", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  font-weight: 1;
+  top: 3px; 
+  margin: 0; 
+  line-height: 1;
+  position: relative;
+}
+.result-line1 {
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1.6rem; 
+  font-weight: 700;
+}
+.result-popup-box {
+    background: #f4a7cd;
+    padding: 35px 25px; 
+    width: 650px;
+    border-radius: 28px;
+    text-align: center;
+    border: 4px solid #d85a8d;
+    animation: popupFade .25s ease-out;
+}
