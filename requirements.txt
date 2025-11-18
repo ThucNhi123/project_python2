@@ -7,3 +7,4 @@ joblib
 gdown
 gunicorn
 django
+whitenoise
