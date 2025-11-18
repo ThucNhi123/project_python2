@@ -12,6 +12,8 @@ urlpatterns = [
     path("api/weekly-plan/", api_generate_plan, name="api_generate_plan"),
 
     path('goal-translator/', views.goal_translator, name='goal_translator'),
+    path("api/goal-translator/", views.api_goal_translator, name="api_goal_translator"),
+
     path('class-picker/', views.class_picker, name='class_picker'),
     path('what-if-coach/', views.what_if_coach, name='what_if_coach'),
 

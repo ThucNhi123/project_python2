@@ -186,10 +186,91 @@ def api_generate_plan(request):
 def weekly_plan_generator_view(request):
     return render(request, 'tracker/weekly_plan_generator.html')
 
-# --------------------- OTHER FEATURES --------------------------
+# --------------------- GOAL TRANSLATOR --------------------------
+
 def goal_translator(request):
     return render(request, 'tracker/goal_translator.html')
 
+def api_goal_translator(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "POST only"}, status=400)
+
+    try:
+        data = json.loads(request.body)
+
+        weight_change = float(data["weightChange"])
+        max_hours = float(data["maxHours"])
+        free_days = data["freeDays"]
+        split_mode = data["splitMode"]
+        peak_day = data.get("peakDay")
+
+        MAP_DAY = {
+            "Thứ 2": "Mon",
+            "Thứ 3": "Tue",
+            "Thứ 4": "Wed",
+            "Thứ 5": "Thu",
+            "Thứ 6": "Fri",
+            "Thứ 7": "Sat",
+            "Chủ nhật": "Sun"
+        }
+
+        free_days = [MAP_DAY[d] for d in free_days]
+        if peak_day:
+            peak_day = MAP_DAY.get(peak_day)
+
+        # --- lấy profile thật nếu có ---
+        session_key = request.session.session_key
+
+        db_prof = None
+        try:
+            db_prof = UserProfile.objects.get(session_key=session_key)
+        except:
+            pass
+
+        if db_prof: 
+            SEX_MAP = {
+                "Nam": "male", 
+                "Nữ": "female", 
+                "Khác": "female"
+            }
+            profile = MLProfile(
+                age=db_prof.age,
+                sex=SEX_MAP.get(db_prof.sex, "female"),
+                height_cm=db_prof.height,
+                weight_kg=db_prof.weight,
+                body_temp_c=db_prof.body_temp,
+                heart_rate_bpm=db_prof.heart_rate,
+            )
+            base_hr = db_prof.heart_rate
+        else:
+            profile = MLProfile(age=21, sex="female", height_cm=160, weight_kg=50)
+            base_hr = 150
+        
+        weekly_kcal = abs(weight_change) * 7700
+
+        plan_df = weekly_plan_generator(
+            model=model,
+            profile=profile,
+            weekly_target_kcal=weekly_kcal,
+            days=len(free_days),
+            max_minutes_per_day=max_hours * 60,
+            base_hr=base_hr,
+            split_mode=split_mode,
+            free_days=free_days,
+            peak_day=peak_day
+        )
+
+        return JsonResponse({
+            "status": "success",
+            "weekly_kcal": weekly_kcal,
+            "plan": plan_df.to_dict(orient="records")
+        })
+
+    except Exception as e:
+        print("ERROR:", e)
+        return JsonResponse({"error": "Invalid input", "detail": str(e)}, status=400)
+
+# --------------------- OTHER FEATURES --------------------------
 def class_picker(request):
     return render(request, 'tracker/class_picker.html')
 

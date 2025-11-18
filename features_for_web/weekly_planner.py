@@ -108,6 +108,7 @@ class UserProfile:
     height_cm: float
     weight_kg: float
     body_temp_c: float = 37.0
+    heart_rate_bpm: float = 150
 
 #---------------------------------------------
 def distribute_targets(

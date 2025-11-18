@@ -104,6 +104,8 @@ body {
   margin: 0;
   background-color: #ffd6eb;
   font-family: "Maven Pro", sans-serif;
+  overflow: auto;
+  padding-bottom: 250px;
 }
 
 /* Header */

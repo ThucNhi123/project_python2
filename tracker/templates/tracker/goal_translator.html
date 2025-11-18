@@ -230,7 +230,7 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
         .map(btn => btn.innerText.trim());
 
     // ====== VALIDATE ======
-    if (!cal) { alert("⚠️ Vui lòng nhập số calo cần đốt!"); return; }
+    if (!cal) { alert("⚠️ Vui lòng nhập số kg muốn thay đổi!"); return; }
     if (!hours) { alert("⚠️ Vui lòng nhập số giờ tối đa mỗi ngày!"); return; }
     if (freeDays.length === 0) { alert("⚠️ Chọn ít nhất 1 ngày rảnh!"); return; }
     if (mode === "pyramid" && intensityDays.length === 0) {
@@ -253,7 +253,7 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
             "X-CSRFToken": csrftoken
         },
         body: JSON.stringify({
-            weeklyTarget: cal,
+            weightChange: cal,
             maxHours: hours,
             freeDays,
             splitMode: mode,
