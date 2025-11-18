@@ -5,4 +5,5 @@ matplotlib
 scikit-learn
 joblib
 gdown
+gunicorn
 django
