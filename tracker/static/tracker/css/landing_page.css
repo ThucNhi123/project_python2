@@ -48,6 +48,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
+
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 9999; 
 }
 
 header .logo {
@@ -165,7 +170,7 @@ nav a:hover {
 .hero {
   display: flex;
   align-items: center;
-}
+  padding-top: 105px; 
 
 .hero-left img {
   width: 800px;

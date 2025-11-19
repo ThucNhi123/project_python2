@@ -31,6 +31,13 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /*-------font Modak and DynaPuff-------*/
 
 body {
@@ -49,17 +56,17 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
-  
-  position: fixed; 
-  top: 0; 
-  width: 100%; 
-  z-index: 9999; 
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 header .logo {
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 header .logo img {
@@ -72,10 +79,10 @@ header h1 {
   font-size: 1.7rem;
   letter-spacing: 1px;
   font-weight: 1;
-  top: 3px; 
-  margin: 0; 
+  top: 3px;
+  margin: 0;
   line-height: 1;
-  position: relative;   
+  position: relative;
 }
 
 nav a {
@@ -85,12 +92,13 @@ nav a {
   font-weight: 500;
   transition: opacity 0.3s;
   letter-spacing: 4.5px;
-  padding-right: 130px; 
+  padding-right: 130px;
 }
 
 nav a:hover {
   opacity: 0.8;
 }
+
 /* --------Header-------------- */
 
 /* ------ Viền gợn sóng dưới header---------- */
@@ -131,814 +139,548 @@ nav a {
 /* -------------------- POPUP ABOUT US -------------------- */
 
 .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .popup-box {
-    background: #f4a7cd;
-    backdrop-filter: blur(6px);
-    width: 75%;
-    max-width: 800px;
-    border-radius: 35px;
-    padding: 40px 20px;
-    position: relative;
-    animation: popupFade 0.3s ease-out;
-    border: 4px solid #d85a8d;
-    transition: box-shadow 0.4s ease-in-out, 
-                transform 0.2s ease-in-out; 
+  background: #f4a7cd;
+  backdrop-filter: blur(6px);
+  width: 75%;
+  max-width: 800px;
+  border-radius: 35px;
+  padding: 40px 20px;
+  position: relative;
+  animation: popupFade 0.3s ease-out;
+  border: 4px solid #d85a8d;
+  transition: box-shadow 0.4s ease-in-out,
+    transform 0.2s ease-in-out;
 }
 
 .popup-inner {
-    text-align: center;
-    color: #7a1c48;
-    font-family: "Maven Pro", sans-serif;
+  text-align: center;
+  color: #7a1c48;
+  font-family: "Maven Pro", sans-serif;
 }
 
 .popup-title {
-    font-family: "Sigmar One", sans-serif;
-    font-size: 45px;
-    margin: 0 0 10px 0;
-    color: #7a1c48;
+  font-family: "Sigmar One", sans-serif;
+  font-size: 45px;
+  margin: 0 0 10px 0;
+  color: #7a1c48;
 }
 
 .popup-desc {
-    font-size: 20px;
-    margin: 10px 0 25px 0;
-    padding: 0 30px;
+  font-size: 20px;
+  margin: 10px 0 25px 0;
+  padding: 0 30px;
 }
 
 .popup-members {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    font-size: 22px;
-    font-weight: 700;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .popup-members li {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 
 .kitty-left {
-    position: absolute;
-    left: 25px;
-    bottom: 25px;
-    width: 140px;
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+  width: 140px;
 }
 
 .kitty-right {
-    position: absolute;
-    right: 25px;
-    bottom: 25px;
-    width: 140px;
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 140px;
 }
 
+/*------------------*/
 
 
-
-.wave-divider {
-    position: relative;
-    background: #d85a8d; /* Màu của header */
-    height: 30px; /* Chiều cao gợn sóng */
-    width: 100%;
-    margin-top: 100px; /* Bằng với chiều cao của header + một ít khoảng cách */
-    z-index: 9998;
-}
-
-.wave-divider::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30px;
-    background: #ffd6eb; /* Màu nền body */
-    /* Sử dụng clip-path để tạo hình dạng gợn sóng */
-    clip-path: ellipse(50% 100% at 50% 100%); 
-    /* Hoặc sử dụng SVG border/background image cho gợn sóng phức tạp hơn */
-}
-
-/* -------------------- MAIN CONTENT LAYOUT -------------------- */
-.main-content {
-    /* Đảm bảo nội dung không bị header che mất */
-    padding-top: 130px; 
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 80px;
-    padding-left: 60px;
-    padding-right: 60px;
-}
-
-/* -------------------- FORM SECTION (Trái) -------------------- */
-.calorie-form-section {
-    flex: 1;
-    max-width: 500px;
-}
-
-.form-container {
-    background-color: #fce4ec; /* Hồng nhạt */
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 8px 15px rgba(122, 28, 72, 0.2);
-    border: 3px solid #d85a8d;
-    transition: transform 0.3s ease;
-}
-
-.form-container:hover {
-    transform: translateY(-5px);
-}
-
-.form-title {
-    font-family: "DynaPuff", system-ui;
-    color: #7a1c48;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.kitty-icon {
-    width: 35px;
-    margin-left: 10px;
-}
-
-.form-group {
-    margin-bottom: 25px;
-}
-
-.input-form label {
-    display: block;
-    font-family: "Maven Pro", sans-serif;
-    margin-bottom: 8px;
-    font-weight: 700;
-    color: #7a1c48;
-    font-size: 1.1em;
-}
-
-.input-form input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #d85a8d;
-    border-radius: 10px;
-    font-size: 1em;
-    outline: none;
-    background-color: #fff;
-    color: #7a1c48;
-}
-
-.input-form input[type="number"]:focus {
-    border-color: #ff69b4;
-    box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
-}
-
-/* Nút Tính toán */
-.calculate-btn {
-    width: 100%;
-    background-color: #d85a8d;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 30px;
-    font-size: 1.25em;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-family: "Sigmar One", sans-serif;
-    box-shadow: 0 6px 0 #7a1c48; /* Hiệu ứng 3D */
-    margin-top: 15px;
-}
-
-.calculate-btn:hover {
-    background-color: #ff69b4;
-}
-
-.calculate-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 #7a1c48;
-}
-
-.calculate-btn img {
-    width: 20px;
-}
-
-/* -------------------- RESULT SECTION (Phải) -------------------- */
-.result-section {
-    flex: 1;
-    max-width: 500px;
-    position: relative;
-    padding-top: 50px;
-    text-align: center;
-}
-
-.result-box {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 10px 20px rgba(122, 28, 72, 0.3);
-    border: 5px dashed #ff69b4;
-    display: inline-block;
-    position: relative;
-    z-index: 10;
-}
-
-.result-text {
-    font-family: "DynaPuff", system-ui;
-    color: #7a1c48;
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
-
-.calorie-display {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 8px;
-}
-
-.calorie-value {
-    font-family: "Modak", system-ui;
-    font-size: 5.5rem; /* Cực lớn và nổi bật */
-    color: #d85a8d;
-    line-height: 1;
-    text-shadow: 4px 4px 0px #f4a7cd;
-}
-
-.calorie-unit {
-    font-family: "Sigmar One", sans-serif;
-    font-weight: 400;
-    color: #7a1c48;
-    font-size: 1.8em;
-    padding-bottom: 15px;
+.main-title {
+  font-family: "Alfa Slab One", serif;
+  color: #943055;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
 }
 
 .main-kitty {
-    position: absolute;
-    bottom: -120px; /* Đặt hình ảnh Hello Kitty ở phía dưới */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%; 
-    max-width: 400px;
-    height: auto;
-    z-index: 5;
-    opacity: 0.95;
+  position: absolute;
+  bottom: -120px;
+  /* Đặt hình ảnh Hello Kitty ở phía dưới */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  z-index: 5;
+  opacity: 0.95;
 }
 
-/* -------------------- POPUP ABOUT US ADJUSTMENTS -------------------- */
-/* Cần điều chỉnh vị trí kitty để phù hợp với kích thước popup mới */
-.popup-box {
-    box-shadow: 0 15px 30px rgba(122, 28, 72, 0.4);
+/* -------------------- VIỀN/KHUNG BAO CHƯA BODY -------------------- */
+
+:root {
+  --color-primary: #d85a8d;
+  /* Hồng đậm/Màu chủ đạo */
+  --color-secondary: #7a1c48;
+  /* Tím đậm/Màu chữ chính */
+  --color-accent: #ff4785;
+  /* Đỏ/Hồng nổi bật */
+  --color-bg-body: #ffd6eb;
+  /* Nền hồng nhạt */
+  --color-bg-form: #fce4ec;
+  /* Nền form nhẹ hơn */
+  --color-bg-input: #fffafc;
+  /* Nền input/section box */
+  --color-border-light: #f4a7cd;
+  /* Viền/Đường kẻ nhẹ */
+  --shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  --border-radius-large: 20px;
+  --border-radius-medium: 10px;
 }
 
-.popup-members li {
-    background: #ffecf5;
-    border: 2px solid #d85a8d;
-    color: #7a1c48;
-    box-shadow: none;
-    transition: background-color 0.2s;
+body {
+  margin: 0;
+  font-family: "Maven Pro", sans-serif;
+  background-color: var(--color-bg-body);
+  color: var(--color-secondary);
+  min-height: 100vh;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
-.popup-members li:hover {
-    background-color: #fff;
+/* -------------------- NỘI DUNG CHÍNH (Form) -------------------- */
+
+.plan-main-content {
+  padding: 100px 20px 50px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 
-/* -------------------- MEDIA QUERIES -------------------- */
-@media (max-width: 1100px) {
-    .main-content {
-        gap: 40px;
-    }
+/* Bố cục Form chính - Điều chỉnh thành Grid 2 cột cho các section còn lại */
+.plan-generator-form {
+  background-color: var(--color-bg-form);
+  border: 4px solid var(--color-primary);
+  border-radius: var(--border-radius-large);
+  padding: 40px 30px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Bố cục 2 cột chính */
+  gap: 30px;
+  text-align: left;
+  margin: 0 auto;
 }
 
+/* Giữ các section không phải target-section ở 1 cột */
+.plan-section {
+  padding: 20px;
+  border-radius: var(--border-radius-medium);
+  border: 2px dashed var(--color-border-light);
+  background-color: var(--color-bg-input);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-family: "DynaPuff", system-ui;
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  margin-top: 0;
+  border-bottom: 3px solid var(--color-border-light);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input Group Styling */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+}
+
+.input-group input:not([type="checkbox"]),
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--color-border-light);
+  border-radius: 25px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: var(--color-primary);
+  background-color: white;
+  transition: border-color 0.3s;
+}
+
+.target-section {
+  grid-column: 1 / -1;
+}
+
+
+/* ------------------ 1. Activity Selector (Nhóm hoạt động) ------------------ */
+
+.activity-selector {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.activity-selector input[type="radio"] {
+  display: none;
+}
+
+.icon-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;    
+  padding-bottom: 15px;
+  border: 3px solid var(--color-border-light);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: white;
+  flex-grow: 1;
+  min-width: 100px;
+}
+
+/* Styling cho Icon */
+.icon-label .activity-icon {
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+
+.icon-label span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  font-family: "Maven Pro", sans-serif;
+}
+
+.activity-selector input[type="radio"]:checked+.icon-label {
+  border-color: var(--color-accent);
+  background-color: #ffe8f2;
+  box-shadow: 0 0 10px rgba(255, 71, 133, 0.5);
+  transform: scale(1.05);
+}
+
+
+/* ------------------ 2. Slider Group (Mục tiêu Calo) ------------------ */
+.slider-group {
+  text-align: center;
+}
+
+.slider-group label {
+  font-family: "DynaPuff", system-ui;
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+}
+
+.slider-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#weekly_target {
+  -webkit-appearance: none;
+  width: 90%;
+  height: 15px;
+  background: var(--color-border-light);
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+#weekly_target::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid var(--color-secondary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#targetValue {
+  font-family: "Sigmar One", sans-serif;
+  font-size: 2.8rem;
+  color: var(--color-accent);
+  margin-top: 10px;
+  display: block;
+  text-shadow: 1px 1px 0 var(--color-secondary);
+}
+
+/* ------------------ 3. Day Selector (Chọn thứ) ------------------ */
+.day-selector {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.day-selector input[type="checkbox"] {
+  display: none;
+}
+
+.day-selector label {
+  font-family: "Maven Pro", sans-serif;
+  padding: 8px 3px;
+  background-color: white;
+  border: 2px solid var(--color-border-light);
+  border-radius: 25px;
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  transition: all 0.2s;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.day-selector input[type="checkbox"]:checked+label {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-secondary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ------------------ Generate Button (Tạo Lịch Tập) ------------------ */
+
+.generate-btn {
+  font-family: "Maven Pro", sans-serif;
+  grid-column: 1 / -1;
+  padding: 15px 30px;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 20px;
+  box-shadow: 0 6px 0 var(--color-secondary);
+  text-shadow: 1px 1px 0 var(--color-secondary);
+}
+
+.generate-btn:hover {
+  background-color: #d63772;
+}
+
+.generate-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 var(--color-secondary);
+}
+
+/* ------------------ Popup KẾ HOẠCH (Plan Popup) ------------------ */
+/* Giữ nguyên styling Popup như trước */
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  /* Mặc định ẩn */
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2000; 
+  padding: 20px; 
+  padding-top: 110px;
+}
+
+.popup-overlay.show {
+  display: flex;
+}
+
+.plan-box {
+  background-color: white;
+  border: 5px solid var(--color-primary);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow);
+
+  padding: 30px 35px;
+  max-width: 95%;
+  width: 800px;
+  text-align: center;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.schedule-title {
+  font-family: "Sigmar One", sans-serif;
+  color: var(--color-accent);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.plan-table-container {
+  overflow-x: auto;
+  margin: 10px 0 20px 0;
+}
+
+.weekly-plan-table {
+  width: 100%;
+  min-width: 600px;
+  /* Đảm bảo đủ rộng trên mobile */
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.weekly-plan-table th,
+.weekly-plan-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid var(--color-border-light);
+  font-family: 'Maven Pro', sans-serif;
+  color: var(--color-secondary);
+}
+
+.weekly-plan-table thead th {
+  background-color: var(--color-primary);
+  color: white;
+  font-family: 'Rubik Bubbles', system-ui;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.weekly-plan-table tbody tr:nth-child(even) {
+  background-color: #ffe8f2;
+}
+
+.weekly-plan-table tbody tr:hover {
+  background-color: var(--color-border-light);
+  color: var(--color-secondary);
+}
+
+.plan-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.plan-options p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: "DynaPuff", system-ui;
+}
+
+.option-buttons button {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 3px solid var(--color-secondary);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--color-bg-form);
+  color: var(--color-secondary);
+  transition: all 0.2s;
+  font-family: "Maven Pro", sans-serif;
+}
+
+.option-buttons button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.close-plan-btn {
+  margin-top: 25px;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  background-color: var(--color-border-light);
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.close-plan-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+
+/* Responsive */
 @media (max-width: 850px) {
-    header {
-        padding: 15px 30px;
-        flex-direction: column;
-    }
 
-    nav a {
-        padding-right: 0;
-        margin-left: 0;
-        margin-top: 10px;
-        display: block;
-        text-align: center;
-    }
-    
-    .wave-divider {
-        margin-top: 120px; /* Tăng khoảng cách do header co lại */
-    }
+  /* Điều chỉnh breakpoint do max-width form nhỏ hơn */
+  .plan-generator-form {
+    grid-template-columns: 1fr;
+  }
 
-    .main-content {
-        flex-direction: column;
-        align-items: center;
-        padding-top: 150px;
-        gap: 60px;
-    }
+  .plan-section {
+    grid-column: 1 / -1;
+  }
 
-    .calorie-form-section, .result-section {
-        max-width: 90%;
-        width: 100%;
-        margin-bottom: 0;
-    }
-
-    .result-section {
-        padding-top: 0;
-    }
-    
-    .main-kitty {
-        position: static;
-        transform: none;
-        margin-top: 40px;
-    }
+  .main-title {
+    font-size: 2.5rem;
+  }
 }
 
-@media (max-width: 550px) {
-    header h1 {
-        font-size: 1.4rem;
-    }
-    
-    .result-box {
-        padding: 20px;
-    }
-    
-    .calorie-value {
-        font-size: 4rem;
-    }
-    
-    .kitty-left, .kitty-right {
-        width: 100px;
-    }
-    
-    .popup-box {
-        width: 90%;
-        padding: 30px 15px;
-    }
+@media (max-width: 576px) {
+  .main-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .plan-generator-form {
+    padding: 20px 15px;
+  }
+
+  .day-selector label {
+    flex-basis: 12%;
+    /* Đảm bảo 7 nút nằm gọn */
+    font-size: 0.75rem;
+  }
+
+  .plan-box {
+    padding: 20px;
+  }
+
+  .schedule-title {
+    font-size: 1.5rem;
+  }
 }
-
-/* -------------------- KEYFRAMES (Animation) -------------------- */
-@keyframes popupFade {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-                /* -------------------- CẤU HÌNH CHUNG & BODY -------------------- */
-
-        :root {
-            --color-primary: #d85a8d; /* Hồng đậm/Màu chủ đạo */
-            --color-secondary: #7a1c48; /* Tím đậm/Màu chữ chính */
-            --color-accent: #ff4785; /* Đỏ/Hồng nổi bật */
-            --color-bg-body: #ffd6eb; /* Nền hồng nhạt */
-            --color-bg-form: #fce4ec; /* Nền form nhẹ hơn */
-            --color-bg-input: #fffafc; /* Nền input/section box */
-            --color-border-light: #f4a7cd; /* Viền/Đường kẻ nhẹ */
-            --shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-            --border-radius-large: 20px;
-            --border-radius-medium: 10px;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Maven Pro", sans-serif;
-            background-color: var(--color-bg-body);
-            color: var(--color-secondary);
-            min-height: 100vh;
-            padding-top: 40px; 
-            display: flex;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        /* -------------------- NỘI DUNG CHÍNH (Form) -------------------- */
-
-        .plan-main-content {
-            padding: 0 20px 50px 20px;
-            max-width: 800px; /* Giảm max-width vì đã bỏ 1 cột */
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .main-title {
-            font-family: "Sigmar One", sans-serif;
-            font-size: 3rem;
-            color: var(--color-accent); 
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0px var(--color-primary); 
-        }
-
-        /* Bố cục Form chính - Điều chỉnh thành Grid 2 cột cho các section còn lại */
-        .plan-generator-form {
-            background-color: var(--color-bg-form);
-            border: 4px solid var(--color-primary); 
-            border-radius: var(--border-radius-large);
-            padding: 40px 30px; 
-            box-shadow: var(--shadow);
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Bố cục 2 cột chính */
-            gap: 30px;
-            text-align: left;
-            margin: 0 auto;
-        }
-        
-        /* Giữ các section không phải target-section ở 1 cột */
-        .plan-section {
-            padding: 20px;
-            border-radius: var(--border-radius-medium);
-            border: 2px dashed var(--color-border-light);
-            background-color: var(--color-bg-input); 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            /* Đảm bảo các section nhỏ hơn chiếm đúng 1/2 chiều rộng */
-        }
-
-        .section-title {
-            font-family: "DynaPuff", system-ui;
-            font-size: 1.5rem;
-            color: var(--color-secondary);
-            margin-top: 0;
-            border-bottom: 3px solid var(--color-border-light);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /* Input Group Styling */
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            font-family: "Maven Pro", sans-serif;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--color-secondary);
-            font-size: 1.1rem;
-        }
-
-        .input-group input:not([type="checkbox"]),
-        .input-group select {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid var(--color-border-light);
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            color: var(--color-primary);
-            background-color: white;
-            transition: border-color 0.3s;
-        }
-
-        .input-group input:focus,
-        .input-group select:focus {
-            border-color: var(--color-accent);
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 71, 133, 0.5);
-        }
-
-        /* Phần Mục tiêu chiếm hết chiều rộng */
-        .target-section {
-            grid-column: 1 / -1; 
-        }
-
-
-        /* ------------------ 1. Activity Selector (Nhóm hoạt động) ------------------ */
-
-        .activity-selector {
-            display: flex;
-            justify-content: space-around;
-            gap: 10px;
-            flex-wrap: wrap; 
-        }
-
-        .activity-selector input[type="radio"] {
-            display: none;
-        }
-
-        .icon-label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px 5px;
-            border: 3px solid var(--color-border-light);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background-color: white;
-            flex-grow: 1;
-            min-width: 100px;
-        }
-
-        /* Styling cho Icon */
-        .icon-label .activity-icon {
-            font-size: 30px; 
-            margin-bottom: 5px;
-            color: var(--color-primary);
-        }
-
-        .icon-label span {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--color-primary);
-            font-family: "Maven Pro", sans-serif;
-        }
-
-        .activity-selector input[type="radio"]:checked + .icon-label {
-            border-color: var(--color-accent);
-            background-color: #ffe8f2;
-            box-shadow: 0 0 10px rgba(255, 71, 133, 0.5);
-            transform: scale(1.05);
-        }
-
-
-        /* ------------------ 2. Slider Group (Mục tiêu Calo) ------------------ */
-        .slider-group {
-            text-align: center;
-        }
-
-        .slider-group label {
-            font-family: "DynaPuff", system-ui;
-            font-size: 1.2rem;
-            color: var(--color-secondary);
-        }
-
-        .slider-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        #weekly_target {
-            -webkit-appearance: none;
-            width: 90%;
-            height: 15px;
-            background: var(--color-border-light);
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-
-        #weekly_target::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            cursor: pointer;
-            border: 3px solid var(--color-secondary);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        #targetValue {
-            font-family: "Rubik Bubbles", system-ui; 
-            font-size: 2.8rem;
-            color: var(--color-accent);
-            margin-top: 10px;
-            display: block;
-            text-shadow: 1px 1px 0 var(--color-secondary);
-        }
-
-        /* ------------------ 3. Day Selector (Chọn thứ) ------------------ */
-        .day-selector {
-            display: flex;
-            justify-content: space-between;
-            gap: 5px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .day-selector input[type="checkbox"] {
-            display: none;
-        }
-
-        .day-selector label {
-            font-family: 'DynaPuff', system-ui;
-            padding: 8px 3px; 
-            background-color: white;
-            border: 2px solid var(--color-border-light);
-            border-radius: 10px;
-            cursor: pointer;
-            flex-grow: 1;
-            text-align: center;
-            transition: all 0.2s;
-            color: var(--color-primary);
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        .day-selector input[type="checkbox"]:checked + label {
-            background-color: var(--color-accent);
-            color: white;
-            border-color: var(--color-secondary);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* ------------------ Generate Button (Tạo Lịch Tập) ------------------ */
-
-        .generate-btn {
-            grid-column: 1 / -1;
-            padding: 15px 30px;
-            background-color: var(--color-accent); 
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            margin-top: 20px;
-            box-shadow: 0 6px 0 var(--color-secondary); 
-            font-family: "DynaPuff", system-ui;
-            text-shadow: 1px 1px 0 var(--color-secondary);
-        }
-
-        .generate-btn:hover {
-            background-color: #d63772; 
-        }
-
-        .generate-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 3px 0 var(--color-secondary);
-        }
-
-        /* ------------------ Popup KẾ HOẠCH (Plan Popup) ------------------ */
-        /* Giữ nguyên styling Popup như trước */
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none; /* Mặc định ẩn */
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .popup-overlay.show {
-            display: flex; /* Hiện khi có class 'show' */
-        }
-
-        .plan-box {
-            background-color: white;
-            border: 5px solid var(--color-primary);
-            border-radius: var(--border-radius-large);
-            box-shadow: var(--shadow);
-            padding: 40px;
-            max-width: 90%;
-            width: 800px;
-            text-align: center;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .schedule-title {
-            font-family: "Sigmar One", sans-serif;
-            color: var(--color-accent);
-            font-size: 2rem;
-            margin-bottom: 25px;
-        }
-        
-        .plan-table-container {
-            overflow-x: auto;
-            margin: 20px 0 40px 0;
-        }
-
-        .weekly-plan-table {
-            width: 100%;
-            min-width: 600px; /* Đảm bảo đủ rộng trên mobile */
-            border-collapse: collapse;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .weekly-plan-table th, .weekly-plan-table td {
-            padding: 12px 15px;
-            text-align: center;
-            border: 1px solid var(--color-border-light);
-            font-family: 'Maven Pro', sans-serif;
-            color: var(--color-secondary);
-        }
-
-        .weekly-plan-table thead th {
-            background-color: var(--color-primary);
-            color: white;
-            font-family: 'Rubik Bubbles', system-ui;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .weekly-plan-table tbody tr:nth-child(even) {
-            background-color: #ffe8f2;
-        }
-
-        .weekly-plan-table tbody tr:hover {
-            background-color: var(--color-border-light);
-            color: var(--color-secondary);
-        }
-        
-        .plan-options {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .plan-options p {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-family: "DynaPuff", system-ui;
-        }
-
-        .option-buttons button {
-            font-size: 1.1rem;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border: 3px solid var(--color-secondary);
-            border-radius: 10px;
-            cursor: pointer;
-            background-color: var(--color-bg-form);
-            color: var(--color-secondary);
-            transition: all 0.2s;
-            font-family: "Maven Pro", sans-serif;
-        }
-
-        .option-buttons button:hover {
-            background-color: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-        }
-
-        .close-plan-btn {
-            margin-top: 25px;
-            padding: 10px 30px;
-            font-size: 1.2rem;
-            background-color: var(--color-border-light);
-            color: var(--color-secondary);
-            border: 2px solid var(--color-secondary);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .close-plan-btn:hover {
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-
-        /* Responsive */
-        @media (max-width: 850px) { /* Điều chỉnh breakpoint do max-width form nhỏ hơn */
-            .plan-generator-form {
-                grid-template-columns: 1fr;
-            }
-            .plan-section {
-                grid-column: 1 / -1;
-            }
-            .main-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .main-title {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-            .plan-generator-form {
-                padding: 20px 15px;
-            }
-            .day-selector label {
-                flex-basis: 12%; /* Đảm bảo 7 nút nằm gọn */
-                font-size: 0.75rem;
-            }
-            .plan-box {
-                padding: 20px;
-            }
-            .schedule-title {
-                font-size: 1.5rem;
-            }
-        }

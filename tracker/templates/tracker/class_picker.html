@@ -1,106 +1,100 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8">
-  <title>🌸 Hello Kitty Fitness 🌸</title>
-  <link rel="stylesheet" href="{% static 'tracker/css/class_picker.css' %}">
-   <!--font Modak and DynaPuff-->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>🌸 Hello Kitty Fitness 🌸</title>
+    <link rel="stylesheet" href="{% static 'tracker/css/class_picker.css' %}">
+    <!--font Modak and DynaPuff-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-  <div id="aboutPopup" class="popup-overlay">
-    <div class="popup-box">
-      <div class="popup-inner">
-        <h2 class="popup-title">About us</h2>
-        <p class ="popup-desc">
-          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
-          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
-        </p>
+    <div id="aboutPopup" class="popup-overlay">
+        <div class="popup-box">
+            <div class="popup-inner">
+                <h2 class="popup-title">About us</h2>
+                <p class="popup-desc">
+                    Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness –
+                    nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+                </p>
 
-        <ul class="popup-members">
-          <li>11245870 – Nguyễn Khánh Duy</li>
-          <li>11245886 – Trần Thị Nhật Khánh</li>
-          <li>11245840 – Vũ Đức Anh</li>
-          <li>11245892 – Lê Phạm Khánh Linh</li>
-          <li>11245921 – Hoàng Thục Nhi</li>
-          <li>11245899 – Vũ Trần Cát Linh</li>
-        </ul>
-        
-        <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
-        <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
-      </div>
+                <ul class="popup-members">
+                    <li>11245870 – Nguyễn Khánh Duy</li>
+                    <li>11245886 – Trần Thị Nhật Khánh</li>
+                    <li>11245840 – Vũ Đức Anh</li>
+                    <li>11245892 – Lê Phạm Khánh Linh</li>
+                    <li>11245921 – Hoàng Thục Nhi</li>
+                    <li>11245899 – Vũ Trần Cát Linh</li>
+                </ul>
+
+                <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
+                <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src= {% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
-      <h1>Kitty Fitness</h1>
-    </div>
-    <nav>
-      <a href="#" id="aboutBtn">About us</a>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src={% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
+            <h1>Kitty Fitness</h1>
+        </div>
+        <nav>
+            <a href="#" id="aboutBtn">About us</a>
+        </nav>
+    </header>
 
 
-<!--Sửa ở đây-->
-<div class="plan-main-content">
-        <h1 class="main-title">🤸‍♂️ CÔNG CỤ TẠO LỊCH TẬP CÁ NHÂN 🏋️‍♀️</h1>
-        
+    <!--Sửa ở đây-->
+    <div class="plan-main-content">
+        <h1 class="main-title">🤸‍♂️ Chọn loại lớp & tạo kế hoạch tập luyện của bạn 🏋️‍♀️</h1>
+
         <form class="plan-generator-form" id="planForm">
-            
+
             <div class="plan-section">
-                <h2 class="section-title">🏞️ Nhóm Hoạt động Ưu tiên</h2>
+                <h2 class="section-title">🏃 Priority Activity Group</h2>
                 <div class="input-group">
                     <label>Chọn nhóm hoạt động bạn muốn tập trung:</label>
                     <div class="activity-selector">
-                        
+
                         <input type="radio" id="outdoor" name="activity" value="Ngoài trời" checked>
                         <label for="outdoor" class="icon-label">
                             <span class="activity-icon fas fa-mountain"></span>
-                            <span>Ngoài trời</span>
+                            <span>🏝 Ngoài trời</span>
                         </label>
 
                         <input type="radio" id="art" name="activity" value="Nghệ thuật">
                         <label for="art" class="icon-label">
                             <span class="activity-icon fas fa-masks-theater"></span>
-                            <span>Nghệ thuật</span>
+                            <span>💃 Nghệ thuật</span>
                         </label>
 
                         <input type="radio" id="indoor" name="activity" value="Trong nhà">
                         <label for="indoor" class="icon-label">
                             <span class="activity-icon fas fa-house-chimney"></span>
-                            <span>Trong nhà</span>
+                            <span>🏡 Trong nhà</span>
                         </label>
-                        
+
                         <input type="radio" id="resistance" name="activity" value="Kháng lực">
                         <label for="resistance" class="icon-label">
                             <span class="activity-icon fas fa-weight-hanging"></span>
-                            <span>Kháng lực</span>
+                            <span>🏋️ Kháng lực</span>
                         </label>
-                        
+
                     </div>
                 </div>
-
-                <div class="input-group">
-                    <label for="experience">Kinh nghiệm tập (Điều chỉnh cường độ):</label>
-                    <select id="experience" name="experience" required>
-                        <option value="beginner">Mới bắt đầu</option>
-                        <option value="intermediate">Trung cấp</option>
-                        <option value="advanced">Nâng cao</option>
-                    </select>
-                </div>
-
             </div>
-            
+
             <div class="plan-section">
-                <h2 class="section-title">📅 Tần suất & Thời lượng Tập</h2>
-                
+                <h2 class="section-title">🗓 Workout Frequency & Duration</h2>
+
                 <div class="input-group">
                     <label>Ngày tập trong tuần:</label>
                     <div class="day-selector">
@@ -113,36 +107,37 @@
                         <input type="checkbox" id="cn" name="days" value="Chủ Nhật"><label for="cn">CN</label>
                     </div>
                 </div>
-                
+
                 <div class="input-group">
                     <label for="duration">Thời lượng trung bình mỗi buổi (phút):</label>
                     <input type="number" id="duration" name="duration" min="15" max="180" value="60" required>
                 </div>
             </div>
-            
+
             <div class="plan-section target-section">
-                <h2 class="section-title">🔥 Mục tiêu Calo Hàng tuần</h2>
+                <h2 class="section-title">🔥 Weekly Target for Calorie Burn</h2>
                 <div class="slider-group">
                     <label for="weekly_target">Tổng Calo mục tiêu đốt trong tuần (kcal):</label>
                     <div class="slider-display">
                         <span id="targetValue">1500 kcal</span>
-                        <input type="range" id="weekly_target" name="weekly_target" min="500" max="5000" value="1500" step="100">
+                        <input type="range" id="weekly_target" name="weekly_target" min="500" max="5000" value="1500"
+                            step="100">
                     </div>
                 </div>
             </div>
-            
+
             <button type="submit" class="generate-btn" id="generateBtn">
-                TẠO LỊCH TẬP NGAY! ✨
+                TẠO LỊCH TẬP NGAY
             </button>
-            
+
         </form>
 
         <div class="popup-overlay" id="planPopup">
             <div class="plan-box">
                 <h2 class="schedule-title">📅 KẾ HOẠCH TẬP LUYỆN CÁ NHÂN</h2>
                 <div id="planDetails">
-                    </div>
-                
+                </div>
+
                 <div class="plan-options">
                     <p>Bạn muốn làm gì tiếp theo?</p>
                     <div class="option-buttons">
@@ -151,11 +146,11 @@
                         <button type="button" onclick="sharePlan()">Chia sẻ</button>
                     </div>
                 </div>
-                
+
                 <button type="button" class="close-plan-btn" onclick="closePopup()">Đóng & Tiếp tục</button>
             </div>
         </div>
-        
+
     </div>
 
     <script>
@@ -165,12 +160,12 @@
             const planForm = document.getElementById('planForm');
             const planPopup = document.getElementById('planPopup');
             const planDetails = document.getElementById('planDetails');
-            
+
             // --- 1. Cập nhật giá trị Slider ---
             weeklyTargetSlider.addEventListener('input', () => {
                 targetValueDisplay.textContent = `${weeklyTargetSlider.value} kcal`;
             });
-            
+
             // Khởi tạo giá trị ban đầu (đảm bảo hiển thị đúng khi load)
             targetValueDisplay.textContent = `${weeklyTargetSlider.value} kcal`;
 
@@ -178,7 +173,7 @@
             // --- 2. Xử lý Form Submission ---
             planForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
+
                 // Giả định các thông tin cơ bản (Tuổi, Cân nặng, Chiều cao, Giới tính)
                 // đã được lưu trữ từ khảo sát ban đầu của người dùng
                 const assumedUserData = {
@@ -188,44 +183,44 @@
                     gender: 'female',
                     bmi: (60 / (1.7 * 1.7)).toFixed(1)
                 };
-                
+
                 // Lấy dữ liệu form
                 const formData = new FormData(planForm);
                 const data = { ...assumedUserData };
-                
+
                 // Lấy các ngày đã chọn
                 const selectedDays = Array.from(document.querySelectorAll('input[name="days"]:checked')).map(cb => cb.value);
                 data['days'] = selectedDays;
 
                 for (let [key, value] of formData.entries()) {
                     if (key !== 'days') {
-                         data[key] = value;
+                        data[key] = value;
                     }
                 }
-                
+
                 // Giả lập tạo lịch tập
                 const planHTML = generateMockPlan(data);
-                
+
                 planDetails.innerHTML = planHTML;
                 planPopup.classList.add('show');
             });
-            
+
             // --- 3. Hàm tạo lịch tập giả lập ---
             function generateMockPlan(data) {
                 const numDays = data.days.length;
                 if (numDays === 0) {
-                     return `<p style="color: var(--color-accent); font-family: 'DynaPuff', system-ui;">Vui lòng chọn ít nhất một ngày tập luyện!</p>`;
+                    return `<p style="color: var(--color-accent); font-family: 'DynaPuff', system-ui;">Vui lòng chọn ít nhất một ngày tập luyện!</p>`;
                 }
                 const dailyCalorie = Math.round(data.weekly_target / numDays);
-                
+
                 // Lấy icon và tên nhóm hoạt động đã chọn
                 const selectedActivityInput = document.querySelector(`input[name="activity"]:checked`);
                 const activityName = selectedActivityInput.value;
                 const activityIcon = selectedActivityInput.nextElementSibling.querySelector('.activity-icon').outerHTML;
-                
+
                 // Giả lập gợi ý chi tiết dựa trên nhóm hoạt động
                 let detailedActivity = "";
-                switch(activityName) {
+                switch (activityName) {
                     case "Ngoài trời":
                         detailedActivity = "Đi bộ nhanh, chạy bộ, leo núi nhẹ hoặc đạp xe ngoài công viên.";
                         break;
@@ -243,7 +238,7 @@
                 }
 
                 let tableRows = '';
-                
+
                 data.days.forEach(day => {
                     const activityDescription = `${detailedActivity} kéo dài ${data.duration} phút.`;
                     tableRows += `
@@ -256,7 +251,7 @@
                         </tr>
                     `;
                 });
-                
+
                 // Thêm hàng cho các ngày nghỉ
                 const allDays = ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật"];
                 allDays.filter(day => !data.days.includes(day)).forEach(day => {
@@ -312,34 +307,35 @@
                 // Logic cuộn lên để chỉnh sửa form
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
-            
+
             window.savePlan = () => {
-                alert("Đã lưu kế hoạch vào bộ sưu tập cá nhân của bạn!"); 
+                alert("Đã lưu kế hoạch vào bộ sưu tập cá nhân của bạn!");
             };
-            
+
             window.sharePlan = () => {
                 alert("Kế hoạch đã sẵn sàng để chia sẻ (Chức năng này đang được phát triển).");
             };
         });
     </script>
 
-  <script>
-  const aboutBtn = document.getElementById("aboutBtn");
-  const aboutPopup = document.getElementById("aboutPopup");
-  const popupBox = document.querySelector(".popup-box");
+    <script>
+        const aboutBtn = document.getElementById("aboutBtn");
+        const aboutPopup = document.getElementById("aboutPopup");
+        const popupBox = document.querySelector(".popup-box");
 
-  // mở popup
-  aboutBtn.addEventListener("click", () => {
-      aboutPopup.style.display = "flex";
-  });
+        // mở popup
+        aboutBtn.addEventListener("click", () => {
+            aboutPopup.style.display = "flex";
+        });
 
-  // click ngoài popup để tắt
-  aboutPopup.addEventListener("click", (e) => {
-      if (!popupBox.contains(e.target)) {
-          aboutPopup.style.display = "none";
-      }
-  });
-</script>
+        // click ngoài popup để tắt
+        aboutPopup.addEventListener("click", (e) => {
+            if (!popupBox.contains(e.target)) {
+                aboutPopup.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
+
 </html>

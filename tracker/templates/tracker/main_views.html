@@ -18,8 +18,8 @@
       <div class="popup-inner">
         <h2 class="popup-title">About us</h2>
         <p class ="popup-desc">
-          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
-          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+          Beautiful and passionate souls converge to create Kitty Fitness - 
+          a space where technology meets emotion, radiating the energy of love and warmth 💖
         </p>
 
         <ul class="popup-members">
@@ -71,12 +71,14 @@
     </div>
 
     <div class="right">
-      <h1 class="title">ĐẶT MỤC TIÊU - LUYỆN TẬP - TOẢ SÁNG</h1>
-      <h2 class="quote">Mỗi ngày một bước, chạm đích cùng Kitty</h2>
+      <h1 class="title">SET GOALS - TRAIN HARD - SHINE BRIGHT</h1>
+      <h2 class="quote">Daily progress, destination reached with Kitty</h2>
       <p class="desc">
-        Mỗi buổi tập là một bước nhỏ tiến đến phiên bản khỏe đẹp và hạnh phúc hơn của chính bạn. 
-        Hello Kitty luôn ở đây để đồng hành cùng bạn trên hành trình đó - 
-        khích lệ bạn kiên trì từng ngày, lan tỏa năng lượng tích cực và tình yêu bản thân. 
+        Every workout is a small step toward a healthier, more
+        beautiful, and happier version of yourself.
+        Hello Kitty is always here to be your companion on that journey
+        —encouraging your daily perseverance, and spreading positive energy 
+        and self-love"
       </p>
     </div>
   </section>
@@ -90,61 +92,61 @@
 <!-- 💖 FORM KHẢO SÁT -->
   <section class="survey-section">
     <div class="survey-card">
-      <h2>KHẢO SÁT THỂ CHẤT</h2>
-      <p>Hãy nhập một số thông tin cơ bản để giúp Hello Kitty hiểu rõ hơn về sức khỏe và thói quen tập luyện của bạn nhé!</p>
+      <h2>PHYSICAL ACTIVITY SURVEY</h2>
+      <p>Please share some basic information so Hello Kitty can better understand your health and fitness habits!</p>
 
       <form id="surveyForm" method="POST">
           {% csrf_token %}
 
           <div class="form-row">
-            <label>Tuổi:</label>
+            <label>Age:</label>
             <input type="number" name="age" value="{{ profile.age|default:'' }}" required>
           </div>
 
           <div class="form-row">
-            <label>Giới tính:</label>
+            <label>Gender:</label>
             <select name="sex" required>
-              <option value="Nam" {% if profile.sex == 'Nam' %}selected{% endif %}>Nam</option>
-              <option value="Nữ" {% if profile.sex == 'Nữ' %}selected{% endif %}>Nữ</option>
-              <option value="Khác" {% if profile.sex == 'Khác' %}selected{% endif %}>Khác</option>
+              <option value="Male" {% if profile.sex == 'Male' %}selected{% endif %}>Female</option>
+              <option value="Female" {% if profile.sex == 'Female' %}selected{% endif %}>Male</option>
+              <option value="Other" {% if profile.sex == 'Other' %}selected{% endif %}>Other</option>
             </select>
           </div>
 
           <div class="form-row">
-            <label>Chiều cao (cm):</label>
+            <label>Height (cm):</label>
             <input type="number" name="height" value="{{ profile.height|default:'' }}" required>
           </div>
 
           <div class="form-row">
-            <label>Cân nặng (kg):</label>
+            <label>Weight (kg):</label>
             <input type="number" name="weight" value="{{ profile.weight|default:'' }}" required>
           </div>
 
           <div class="form-row">
-            <label>Nhịp tim trung bình (bpm):</label>
+            <label>Average heart rate (bpm):</label>
             <input type="number" name="heart_rate" value="{{ profile.heart_rate|default:'' }}" required>
           </div>
 
           <div class="form-row">
-            <label>Nhiệt độ cơ thể (°C):</label>
+            <label>Body tempaerature (°C):</label>
             <input type="number" name="body_temp" value="{{ profile.body_temp|default:'' }}" required>
           </div>
 
           <div class="form-row">
-            <label>Hiệu suất thời gian (%):</label>
+            <label>Time efficiency (%):</label>
             <input type="number" name="efficiency" value="{{ profile.efficiency|default:'' }}" required>
           </div>
 
           <div class="form-row">
-            <label>Cường độ tổng (1–10):</label>
+            <label>Total intensity (1–10):</label>
             <input type="number" name="intensity" value="{{ profile.intensity|default:'' }}" required>
           </div>
 
-          <button type="submit">Lưu khảo sát</button>
+          <button type="submit">Submit survey</button>
       </form>
 
       <p id="surveyMessage" class="survey-success-msg" style="display:none; opacity: 0;">
-        💖 Cảm ơn bạn đã cho chúng tôi biết thêm thông tin sức khỏe cá nhân của bạn!
+        💖 Thank you for providing us with your personal health information
       </p>
     
     </div>
@@ -157,28 +159,28 @@
   <div class="features-row row-1">
     <a class="feature-card" href="{% url 'weekly_plan_generator' %}">
       <img src="{% static 'tracker/images/card1.png' %}" alt="Kitty 1">
-      <h3>LỊCH TẬP THEO MỤC TIÊU CALO</h3>
-      <p>Hello Kitty sẽ giúp tạo ra một kế hoạch tập luyện hoàn hảo cho cả tuần, 
-        vừa đủ thử thách vừa tràn đầy năng lượng <br>
+      <h3>CALORIE-TARGETED TRAINING PLAN</h3>
+      <p>Hello Kitty will help craft the perfect weekly workout plan that 
+         is both challenging and full of positive energy. <br>
         🍓“Plan smart – Train happy – Shine every day!”</p>
     </a>
 
     <a class="feature-card" href="{% url 'goal_translator' %}">
       <img src="{% static 'tracker/images/card2.png' %}" alt="Kitty 2">
-      <h3>CHUYỂN MỤC TIÊU THÀNH HÀNH ĐỘNG</h3>
+      <h3>TURN GOALS INTO ACTION</h3>
       <p>
-        Muốn giảm cân? Tăng cơ?<br>
-        Kitty sẽ tính toán và gợi ý bạn lộ trình phù hợp <br>
+        Ready to shed pounds or build muscle mass?<br>
+        Kitty will calculate and suggest the perfect plan for you <br>
         🌼“Dream it – Do it – Kitty got you!”
       </p>
     </a>
 
     <a class="feature-card" href="{% url 'class_picker' %}">
       <img src="{% static 'tracker/images/card3.png' %}" alt="Kitty 3">
-      <h3>KHÁM PHÁ PHONG CÁCH TẬP CỦA BẠN</h3>
+      <h3>DISCOVER YOUR WORKOUT STYLE</h3>
       <p>
-        Cùng Kitty chọn lớp tập phù hợp nhất - thể thao, nghệ thuật, 
-        hay ngoài trời? Mỗi buổi tâoj là một trải nghiệm mới!<br>
+        Let Kitty help you find your perfect class—be it sports, art-based, 
+        or outdoors? Every session is a brand-new experience!<br>
         🌸 “Find your vibe - Move your way"
       </p>
     </a>
@@ -187,20 +189,21 @@
   <div class="features-row row-2">
     <a class="feature-card" href="{% url 'what_if_coach' %}">
       <img src="{% static 'tracker/images/card4.png' %}" alt="Kitty 4">
-      <h3>HUẤN LUYỆN VIÊN ẢO KITTY</h3>
+      <h3>KITTY VIRTUAL TRAINER</h3>
       <p>
-        Nhập thông tin của bạn và xem ngay số lượng calo đốt cháy dự đoán. 
-        Thử các kịch bản “Nếu tập thêm 10 phút thì sao" cùng Kitty!<br>
+        Enter your details to instantly view your predicted calorie burn. 
+        Then, explore 'What if I train for 10 more minutes?' scenarios with 
+        Kitty!<br>
         💫 “Experiment - Explore - Excel with Kitty!""
       </p>
     </a>
 
     <a class="feature-card" href="{% url 'calorie_swap' %}">
       <img src="{% static 'tracker/images/card5.png' %}" alt="Kitty 5">
-      <h3>CÂN BẰNG ĂN UỐNG VÀ TẬP LUYỆN</h3>
+      <h3>BALANCE NUTRITION AND EXERCISE</h3>
       <p>
-        Bạn vừa ăn một chiếc bánh kem? Kitty giúp bạn 
-        tính ngay bài tập tương đương để “đốt" lại năng lượng ấy!<br>
+        Just had a slice of cake? Kitty will instantly calculate the 
+        equivalent workout to 'burn off' that energy!<br>
         🍓 “Eat sweet - Train neat - Stay fit!”
       </p>
     </a>

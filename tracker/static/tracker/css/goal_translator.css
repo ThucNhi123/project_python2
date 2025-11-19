@@ -211,23 +211,37 @@ nav a {
 }
 
 /* ================== GOAL TRANSLATOR ================== */
+.main-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 140px auto 60px;
+    background: #ffe3f1;
+    border: 4px solid #d66291;
+    border-radius: 35px;
+    padding: 5px 15px;
+    padding-top: 5px; 
+    position: relative; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+    padding-bottom: 100px;
+}
+
 .container {
   width: 80%; 
   max-width: 900px; 
   margin: 0 auto; 
-  padding: 40px 20px;  
+  padding: 20px 10px;  
 }
 .section-title {
   font-family: "Alfa Slab One", serif;
-  font-size: 30px;
+  font-size: 3rem;
   color: #943055;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 25px;
-  margin-top: 110px;
+  margin-top: 40px;
   padding-bottom: 20px;
   position: relative;
+  text-align: center;
 }
 
 .section-title::before {
@@ -286,6 +300,13 @@ margin-bottom: 25px;
   color: white; 
 }
 
+#inputWeight::placeholder, 
+#inputHours::placeholder {
+  color:#ffe5ecb9; 
+}
+#splitMode {
+  color:#ffe5ecb9;
+}
 
 /* Ô CHỌN NGÀY dạng pill */
 .day-buttons,
@@ -350,13 +371,9 @@ background: #b2476f;
 transform: translateY(-3px);
 }
 
-.create-line-bottom {
-    width: 100%;
-    max-width: 900px;
-    height: 4px;
-    background: #c2436b;
-    border-radius: 4px;
-    margin: 25px 0 40px;   /* cách nút một chút cho đẹp */
+/* BẢNG KẾ HOẠCH 7 NGÀY */
+#weeklyPlanWrapper {
+    margin-top: 40px;
 }
 
 .table-title {
@@ -367,11 +384,9 @@ transform: translateY(-3px);
   gap: 10px;
   display: block; 
   text-align: center;
+  margin-top: 10px;
 }
 
-
-
-/* BẢNG KẾ HOẠCH 7 NGÀY */
 table {
 width: 1200px;
 margin: 45px auto;  
@@ -380,6 +395,18 @@ border-spacing: 12px 10px;
 margin-top: -5px;
 }
 
+table tr:hover td {
+  background: #ffb6d9;  
+  transform: scale(1.01);
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+table tr:hover {
+  transform: scale(1.03);
+  transform-origin: center;
+  transition: 0.25s ease-in-out;
+}
 
 th {
 background: #d3457b;
@@ -399,6 +426,46 @@ border-radius: 18px;
 border: 2px solid #d489a7;
 text-align: center;
 font-size: 16px;
+}
+
+.plan-note {
+  width: 900px; 
+  margin: -10px auto 0; 
+  background: #fadde9;
+  padding: 20px 30px;
+  border-radius: 18px;
+  border: 2px dashed #c85a87;
+  color: #7a1c48;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: 0.3s ease-in-out;
+}
+
+.plan-note strong {
+    color: #90315a;
+}
+
+.plan-note ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.plan-note li {
+    margin-bottom: 6px;
+}
+
+.plan-note:hover {
+    transform: scale(1.015);
+    background: #ffcde4;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    border-color: #d13f7b;
+}
+@keyframes kittyShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
 }
 
 .reload-btn {
