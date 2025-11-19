@@ -523,7 +523,7 @@ body {
   align-items: flex-start;
   z-index: 2000; 
   padding: 20px; 
-  padding-top: 110px;
+  padding-top: 11c0px;
 }
 
 .popup-overlay.show {
