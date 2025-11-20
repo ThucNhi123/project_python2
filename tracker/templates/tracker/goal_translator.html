@@ -34,8 +34,8 @@
       <div class="popup-inner">
         <h2 class="popup-title">About us</h2>
         <p class ="popup-desc">
-          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
-          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+          Beautiful and passionate souls converge to create Kitty Fitness - 
+          a space where technology meets emotion, radiating the energy of love and warmth 💖
         </p>
 
         <ul class="popup-members">
@@ -67,90 +67,87 @@
   <!--Sửa ở đây-->
   <div class="main-wrapper">
     <div class="container">
-      <h2 class="section-title">🎯 Lịch tập xây dựng theo mục tiêu cân nặng</h2>
+      <h2 class="section-title">🎯 Workout plan built based on your weight goal</h2>
 
       <div class="input-row">
-          <label>Bạn muốn thay đổi bao nhiêu cân (kg):</label>
-          <input type="number" id="inputWeight" placeholder="Nhập số kg bạn muốn giảm trong một tuần">
+          <label>Desired weight change (kg):</label>
+          <input type="number" id="inputWeight" placeholder="Enter the number of kilograms you want to lose in one week">
       </div>
 
       <div class="input-row">
-          <label>Số giờ tối đa mỗi ngày:</label>
-          <input type="number" id="inputHours" placeholder="Nhập số giờ tối đa cho một ngày tập của bạn">
+          <label>Max hours per day:</label>
+          <input type="number" id="inputHours" placeholder="Enter the maximum number of hours for your training day">
       </div>
 
       <div class="input-row">
-          <label>Chia buổi tập:</label>
+          <label>Divide workout sessions:</label>
           <select id="splitMode">
-              <option value="" disable selected hidden>Chọn cách chia buổi tập cho bạn</option>
+              <option value="" disable selected hidden>Choose how you want your workout sessions to be divided</option>
               <option value="equal">Equal</option>
               <option value="pyramid">Pyramid</option>
           </select>
       </div>
 
       <div class="input-row day-row">
-        <label>Chọn ngày tập:</label>
+        <label>Select training days:</label>
         <div class="day-buttons" id="freeDays">
-            <div class="day-btn">Thứ 2</div>
-            <div class="day-btn">Thứ 3</div>
-            <div class="day-btn">Thứ 4</div>
-            <div class="day-btn">Thứ 5</div>
-            <div class="day-btn">Thứ 6</div>
-            <div class="day-btn">Thứ 7</div>
-            <div class="day-btn">Chủ nhật</div>
+            <div class="day-btn">Monday</div>
+            <div class="day-btn">Tuesday</div>
+            <div class="day-btn">Wednesday</div>
+            <div class="day-btn">Thursday</div>
+            <div class="day-btn">Friday</div>
+            <div class="day-btn">Saturday</div>
+            <div class="day-btn">Sunday</div>
         </div>
       </div>
 
       <div id="intensitySection" style="display:none;">
         <div class="input-row day-row">
-          <label>Ngày có cường độ cao nhất:</label>
+          <label>Highest-intensity day:</label>
           <div class="intensity-buttons">
-            <div class="day-btn">Thứ 2</div>
-            <div class="day-btn">Thứ 3</div>
-            <div class="day-btn">Thứ 4</div>
-            <div class="day-btn">Thứ 5</div>
-            <div class="day-btn">Thứ 6</div>
-            <div class="day-btn">Thứ 7</div>
-            <div class="day-btn">Chủ nhật</div>
+            <div class="day-btn">Monday</div>
+            <div class="day-btn">Tuesday</div>
+            <div class="day-btn">Wednesday</div>
+            <div class="day-btn">Thursday</div>
+            <div class="day-btn">Friday</div>
+            <div class="day-btn">Saturday</div>
+            <div class="day-btn">Sunday</div>
           </div>
         </div>
       </div>
 
-      <button class="create-btn">Tạo ngay</button>
+      <button class="create-btn">Generate now</button>
       <div class="create-line-bottom"></div>
     </div>
 
     <div id="weeklyPlanWrapper" style="display:none;">
-      <h3 class="table-title">Kế hoạch luyện tập 7 ngày</h3>
+      <h3 class="table-title">7-day workout plan</h3>
       <table>
         <tr>
-          <th>Ngày</th>
-          <th>Mục tiêu (kcal)</th>
-          <th>Thời lượng gợi ý</th>
-          <th>Gợi ý nhịp tim</th>
-          <th>Kcal ước tính</th>
-          <th>Khả thi</th>
-          <th>Ghi chú</th>
-        </tr>
-        <tr>
-          <td>Thứ 2</td><td>1750</td><td>45 phút</td><td>180 bpm</td><td>1646.7 kcal</td><td>Không</td><td>Không đạt</td>
+          <th>Day</th>
+          <th>Target (kcal)</th>
+          <th>Duration</th>
+          <th>Heart rate</th>
+          <th>Kcal</th>
+          <th>Feasible</th>
+          <th>Note</th>
         </tr>
       </table>
       
       <div class="plan-note">
-        <p><strong>*Ghi chú:</strong></p>
+        <p><strong>*Note:</strong></p>
         <ul>
-          <li><strong>Mục tiêu (kcal):</strong> lượng kcal bạn dự kiến muốn đốt trong ngày đó</li>
-          <li><strong>Gợi ý thời lượng:</strong> Thời gian tập luyện được gợi ý. Nếu 0 là nghỉ</li>
-          <li><strong>Gợi ý nhịp tim:</strong> Nhịp tim trung bình cần duy trì trong buổi tập</li>
-          <li><strong>Kcal ước tính:</strong> Lượng năng lượng thực tế ước tính bạn có thể đốt được nếu tập với thời lượng và nhịp tim trên</li>
-          <li><strong>Khả thi:</strong> Đánh giá xem bạn có thể đạt được mục tiêu kcal không với điều kiện đã gợi ý 
-            (Có: đạt được; Không: không đạt được do đã max thời lượng và nhịp tim; “-”: ngày nghỉ không đánh giá)</li>
-          <li><strong>Note:</strong> Giải thích lý do đạt/không đạt hoặc chỉ dẫn thêm</li>
+<li><strong>Target (kcal):</strong> Planned calories for that day</li>
+          <li><strong>Duration:</strong> Suggested workout duration. If it's 0, it's a rest day</li>
+          <li><strong>Heart rate:</strong> The average heart rate you need to maintain during the session</li>
+          <li><strong>Kcal:</strong> The estimated energy you can actually burn if you follow the suggested duration and heart rate</li>
+          <li><strong>Feasible:</strong> An evaluation of whether you can achieve the calorie target under the suggested conditions
+                                         (Yes: achievable; No: not achievable due to maxed duration and heart rate; “–”: rest day, not evaluated)</li>
+          <li><strong>Note:</strong> Explanation of why the goal is achieved/not achieved, or additional guidance</li>
         </ul>
       </div>
       <!--nút reload trang-->
-      <button class="reload-btn" onclick="location.reload();">Tạo lại</button>
+      <button class="reload-btn" onclick="location.reload();">Restart</button>
     </div>
   </div>
 
@@ -191,7 +188,7 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
     const result = await response.json();
 
     if (result.status === "success") {
-        document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
+        document.getElementById("surveyMessage").innerText = "💖 Thank you for providing your information!";
     }
 });
 </script>
@@ -245,11 +242,11 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
         .map(btn => btn.innerText.trim());
 
     // ====== VALIDATE ======
-    if (!cal) { alert("⚠️ Vui lòng nhập số kg muốn thay đổi!"); return; }
-    if (!hours) { alert("⚠️ Vui lòng nhập số giờ tối đa mỗi ngày!"); return; }
-    if (freeDays.length === 0) { alert("⚠️ Chọn ít nhất 1 ngày rảnh!"); return; }
+    if (!cal) { alert("⚠️ Please enter the amount of weight you want to lose!"); return; }
+    if (!hours) { alert("⚠️ Please enter the maximum number of hours per day!"); return; }
+    if (freeDays.length === 0) { alert("⚠️ Please select at least one available day!"); return; }
     if (mode === "pyramid" && intensityDays.length === 0) {
-        alert("⚠️ Chọn ngày cường độ cao nhất!");
+        alert("⚠️ Please select the highest-intensity day!");
         return;
     }
 
@@ -282,7 +279,7 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
         renderTable(result.plan);
         document.getElementById("weeklyPlanWrapper").style.display = "block";
     } else {
-        alert("❌ Lỗi khi tạo kế hoạch!");
+        alert("❌ Error generating the plan!");
     }
   });
   </script>
@@ -294,8 +291,8 @@ function renderTable(plan) {
     const table = document.querySelector("#weeklyPlanWrapper table");
     table.innerHTML = `
         <tr>
-            <th>Ngày</th><th>Mục tiêu</th><th>Thời lượng</th>
-            <th>Nhịp tim</th><th>Kcal</th><th>Khả thi</th><th>Note</th>
+            <th>Day</th><th>Target (kcal)</th><th>Duration</th>
+            <th>Heart rate</th><th>Kcal</th><th>Feasible</th><th>Note</th>
         </tr>
     `;
 
@@ -305,7 +302,7 @@ function renderTable(plan) {
             <tr>
                 <td>${row.Day}</td>
                 <td>${row.Target_kcal}</td>
-                <td>${row.Suggest_Duration_min} phút</td>
+                <td>${row.Suggest_Duration_min} minutes</td>
                 <td>${row.Suggest_HR_bpm} bpm</td>
                 <td>${row.Est_kcal}</td>
                 <td>${row.Feasible}</td>

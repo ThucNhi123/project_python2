@@ -15,7 +15,10 @@ urlpatterns = [
     path("api/goal-translator/", views.api_goal_translator, name="api_goal_translator"),
 
     path('class-picker/', views.class_picker, name='class_picker'),
+    path("api/class-picker/", views.class_picker_api, name="class_picker_api"),
+
     path('what-if-coach/', views.what_if_coach, name='what_if_coach'),
+    path("api/what-if/", views.api_what_if, name="api_what_if"),
 
     path('calorie-swap/', views.calorie_swap, name='calorie_swap'),
     path('api/swap-calorie/', api_swap_calorie, name="api_swap_calorie")

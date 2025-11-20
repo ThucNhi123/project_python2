@@ -1,25 +1,17 @@
 import pandas as pd
 import joblib
-import os
-from django.conf import settings
 
-MODEL_PATH = os.path.join(settings.BASE_DIR, "artifacts", "best_calorie_model.pkl")
-try:
-    model = joblib.load(MODEL_PATH)
-except Exception as e:
-    print("MODEL LOAD ERROR:", e)
-    model = None
+MODEL_PATH = "artifacts/best_calorie_model.pkl"
+model = joblib.load(MODEL_PATH)
 
-class FakeModel:
-    def predict(self, X):
-        return [100]   # luôn trả 100 kcal, không dùng X
+FOOD_DB_PATH = "data/food_calories_vi.csv"
 
+def load_food_database():
+    df = pd.read_csv(FOOD_DB_PATH)
+    df["key"] = df["Food_Name"].str.lower().str.strip()
+    return df
 
-
-if model is None:
-    print("⚠️ WARNING: Using FakeModel (real model not loaded)")
-    model = FakeModel()
-
+food_db = load_food_database()
 
 
 def _age_group(age: float) -> str:
@@ -85,26 +77,44 @@ def solve_duration_for_target(model, target_kcal, age, sex, height_cm, weight_kg
     return hi, predict_kcal(model, age, sex, height_cm, weight_kg, hi, base_hr, body_temp_c), True
 
 
-
-
-def swap_calories(food_kcal, age, sex, height, weight, base_hr, max_min, body_temp):
+def swap_calories(food_name, quantity,
+                  age, sex, height, weight,
+                  base_hr, max_min, body_temp):
     """
     INPUT:
-        food_kcal = total kcal need to burn
+        food_name: tên món ăn (string)
+        quantity: số lượng (int)
         age, sex, height, weight, base_hr, max_min
 
     OUTPUT:
         {
-            "required_minutes": float,
-            "burn_estimate": float,
+            "food_name": ...,
+            "quantity": ...,
+            "food_kcal": ...,
+            "required_minutes": ...,
+            "burn_estimate": ...,
             "feasible": bool
         }
     """
+
+    key = food_name.lower().strip()
+    row = food_db.loc[food_db["key"] == key]
+
+    if row.empty:
+        raise ValueError(f"Food '{food_name}' not found in CSV file.")
+
+    kcal_per = float(row.iloc[0]["Calories_per_serving"])
+    total_kcal = kcal_per * quantity
+
+   
     dur, kcal_est, feasible = solve_duration_for_target(
-        model, food_kcal, age, sex, height, weight, base_hr, max_min, body_temp
+        model, total_kcal, age, sex, height, weight, base_hr, max_min, body_temp
     )
 
     return {
+        "food_name": food_name,
+        "quantity": quantity,
+        "food_kcal": total_kcal,
         "required_minutes": round(dur, 1),
         "burn_estimate": round(kcal_est, 1),
         "feasible": feasible

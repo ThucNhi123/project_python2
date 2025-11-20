@@ -67,6 +67,7 @@ header .logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: 60px;
 }
 
 header .logo img {
@@ -85,14 +86,19 @@ header h1 {
   position: relative;
 }
 
+nav {
+  margin-left: auto;
+  margin-right: 70px;   /* chỉnh tùy bạn muốn sát hay xa */
+}
+
 nav a {
   font-family: "Maven Pro", sans-serif;
   color: white;
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s;
-  letter-spacing: 4.5px;
-  padding-right: 130px;
+  letter-spacing: 4px;
+  margin-left: 50px;
 }
 
 nav a:hover {
@@ -100,41 +106,6 @@ nav a:hover {
 }
 
 /* --------Header-------------- */
-
-/* ------ Viền gợn sóng dưới header---------- */
-body {
-  margin: 0;
-  background-color: #ffd6eb;
-  font-family: "Maven Pro", sans-serif;
-}
-
-/* Header */
-header {
-  background-color: #d85a8d;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  width: 60px;
-  height: 60px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 50px;
-  letter-spacing: 4px;
-}
 
 /* -------------------- POPUP ABOUT US -------------------- */
 
@@ -358,6 +329,10 @@ body {
   display: none;
 }
 
+input::placeholder {
+  color:#f9cbd7c3; 
+}
+
 .icon-label {
   display: flex;
   flex-direction: column;
@@ -402,8 +377,8 @@ body {
 }
 
 .slider-group label {
-  font-family: "DynaPuff", system-ui;
-  font-size: 1.2rem;
+  font-family: "Alfa Slab One", serif;
+  font-size: 1rem;
   color: var(--color-secondary);
 }
 
@@ -415,6 +390,7 @@ body {
 
 #weekly_target {
   -webkit-appearance: none;
+  font-family: "Alfa Slab One", serif;
   width: 90%;
   height: 15px;
   background: var(--color-border-light);
@@ -458,7 +434,7 @@ body {
 
 .day-selector label {
   font-family: "Maven Pro", sans-serif;
-  padding: 8px 3px;
+  padding: 12px 10px;
   background-color: white;
   border: 2px solid var(--color-border-light);
   border-radius: 25px;
@@ -469,14 +445,14 @@ body {
   color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 700;
+
 }
 
 .day-selector input[type="checkbox"]:checked+label {
-  background-color: var(--color-accent);
-  color: white;
-  border-color: var(--color-secondary);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  background-color: #ffe8f2;
+  box-shadow: 0 0 10px rgba(255, 71, 133, 0.5);
+  transform: scale(1.05);
 }
 
 /* ------------------ Generate Button (Tạo Lịch Tập) ------------------ */
@@ -485,10 +461,11 @@ body {
   font-family: "Maven Pro", sans-serif;
   grid-column: 1 / -1;
   padding: 15px 30px;
-  background-color: var(--color-accent);
+  background: #d45a86;
+  color: #ffe5ec;
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 28px;
   font-size: 1.8rem;
   font-weight: 700;
   cursor: pointer;
@@ -523,7 +500,7 @@ body {
   align-items: flex-start;
   z-index: 2000; 
   padding: 20px; 
-  padding-top: 11c0px;
+  padding-top: 110px;
 }
 
 .popup-overlay.show {
@@ -545,8 +522,8 @@ body {
 }
 
 .schedule-title {
-  font-family: "Sigmar One", sans-serif;
-  color: var(--color-accent);
+  font-family: "Alfa Slab One", serif;
+  color: #943055;
   font-size: 2rem;
   margin-bottom: 15px;
 }
@@ -580,7 +557,7 @@ body {
 .weekly-plan-table thead th {
   background-color: var(--color-primary);
   color: white;
-  font-family: 'Rubik Bubbles', system-ui;
+  font-family: 'Maven Pro', sans-serif;
   font-size: 1.1rem;
   letter-spacing: 1px;
 }
@@ -603,7 +580,7 @@ body {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 15px;
-  font-family: "DynaPuff", system-ui;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .option-buttons button {
@@ -626,15 +603,21 @@ body {
 }
 
 .close-plan-btn {
-  margin-top: 25px;
-  padding: 10px 30px;
-  font-size: 1.2rem;
-  background-color: var(--color-border-light);
-  color: var(--color-secondary);
-  border: 2px solid var(--color-secondary);
-  border-radius: 15px;
+    font-family: "Maven Pro", sans-serif;
+  grid-column: 1 / -1;
+  padding: 15px 30px;
+  background: #d45a86;
+  color: #ffe5ec;
+  color: white;
+  border: none;
+  border-radius: 28px;
+  font-size: 22px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 20px;
+  box-shadow: 0 6px 0 var(--color-secondary);
+  text-shadow: 1px 1px 0 var(--color-secondary);
 }
 
 .close-plan-btn:hover {

@@ -159,7 +159,7 @@ def weekly_plan_generator(
     else:
         free_days = [d for d in week_days if d in free_days]
     if len(free_days) == 0:
-        raise ValueError("Không có ngày tập hợp lệ trong free_days")
+        raise ValueError("No valid training days in free_days")
 
     # --- xác định index ngày đỉnh ---
     if split_mode == "pyramid":
@@ -198,10 +198,10 @@ def weekly_plan_generator(
                     )
                     if feas2:
                         hr, kcal_est, feasible = hr2, kcal2, True
-                        note = "OK (tăng HR)"
+                        note = "OK (Increase heart rate)"
                     else:
                         hr, kcal_est = hr2, kcal2
-                        note = "Không đạt, Duration=max & HR=max"
+                        note = "Not achieved, Duration=max & HR=max"
             else:
                 hr, kcal_est, feasible = solve_hr_for_target(
                     model, target, profile.age, profile.sex,
@@ -211,7 +211,7 @@ def weekly_plan_generator(
                     body_temp_c=profile.body_temp_c
                 )
                 dur = max_minutes_per_day
-                note = "OK" if feasible else "Không đạt (HR=max)"
+                note = "OK" if feasible else "Not achieved (HR=max)"
             
             plan_rows.append({
                 "Day": dname,

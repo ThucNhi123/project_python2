@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -15,79 +15,103 @@
 </head>
 
 <body>
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === name + "=") {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie("csrftoken");
+    </script>
+
 
     <div id="aboutPopup" class="popup-overlay">
         <div class="popup-box">
-            <div class="popup-inner">
-                <h2 class="popup-title">About us</h2>
-                <p class="popup-desc">
-                    Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness –
-                    nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
-                </p>
+        <div class="popup-inner">
+            <h2 class="popup-title">About us</h2>
+            <p class ="popup-desc">
+            Beautiful and passionate souls converge to create Kitty Fitness - 
+            a space where technology meets emotion, radiating the energy of love and warmth 💖
+            </p>
 
-                <ul class="popup-members">
-                    <li>11245870 – Nguyễn Khánh Duy</li>
-                    <li>11245886 – Trần Thị Nhật Khánh</li>
-                    <li>11245840 – Vũ Đức Anh</li>
-                    <li>11245892 – Lê Phạm Khánh Linh</li>
-                    <li>11245921 – Hoàng Thục Nhi</li>
-                    <li>11245899 – Vũ Trần Cát Linh</li>
-                </ul>
-
-                <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
-                <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
-            </div>
+            <ul class="popup-members">
+            <li>11245870 – Nguyễn Khánh Duy</li>
+            <li>11245886 – Trần Thị Nhật Khánh</li>
+            <li>11245840 – Vũ Đức Anh</li>
+            <li>11245892 – Lê Phạm Khánh Linh</li>
+            <li>11245921 – Hoàng Thục Nhi</li>
+            <li>11245899 – Vũ Trần Cát Linh</li>
+            </ul>
+            
+            <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
+            <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
+        </div>
         </div>
     </div>
 
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src={% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
-            <h1>Kitty Fitness</h1>
+        <img src= {% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
+        <h1>Kitty Fitness</h1>
         </div>
         <nav>
-            <a href="#" id="aboutBtn">About us</a>
+        <a href="#" id="aboutBtn">About us</a>
         </nav>
     </header>
 
 
+
     <!--Sửa ở đây-->
     <div class="plan-main-content">
-        <h1 class="main-title">🤸‍♂️ Chọn loại lớp & tạo kế hoạch tập luyện của bạn 🏋️‍♀️</h1>
+        <h1 class="main-title">🤸‍♂️ Pick a class type and build your workout plan 🏋️‍♀️</h1>
 
         <form class="plan-generator-form" id="planForm">
 
             <div class="plan-section">
                 <h2 class="section-title">🏃 Priority Activity Group</h2>
                 <div class="input-group">
-                    <label>Chọn nhóm hoạt động bạn muốn tập trung:</label>
+                    <label>Select your focus activity group:</label>
                     <div class="activity-selector">
 
-                        <input type="radio" id="outdoor" name="activity" value="Ngoài trời" checked>
+                        <input type="radio" id="outdoor" name="activity" value="Outdoor">
                         <label for="outdoor" class="icon-label">
                             <span class="activity-icon fas fa-mountain"></span>
-                            <span>🏝 Ngoài trời</span>
+                            <span>🏝 Outdoor</span>
                         </label>
 
-                        <input type="radio" id="art" name="activity" value="Nghệ thuật">
+                        <input type="radio" id="art" name="activity" value="Art">
                         <label for="art" class="icon-label">
                             <span class="activity-icon fas fa-masks-theater"></span>
-                            <span>💃 Nghệ thuật</span>
+                            <span>💃 Art</span>
                         </label>
 
-                        <input type="radio" id="indoor" name="activity" value="Trong nhà">
+                        <input type="radio" id="indoor" name="activity" value="Indoor">
                         <label for="indoor" class="icon-label">
                             <span class="activity-icon fas fa-house-chimney"></span>
-                            <span>🏡 Trong nhà</span>
+                            <span>🏡 Indoor</span>
                         </label>
 
-                        <input type="radio" id="resistance" name="activity" value="Kháng lực">
+                        <input type="radio" id="resistance" name="activity" value="Resistance">
                         <label for="resistance" class="icon-label">
                             <span class="activity-icon fas fa-weight-hanging"></span>
-                            <span>🏋️ Kháng lực</span>
+                            <span>🏋️ Resistance Training</span>
                         </label>
 
+                        <input type="radio" id="sport" name="activity" value="Sports">
+                        <label for="sport" class="icon-label">
+                            <span class="activity-icon fas fa-basketball-ball"></span>
+                            <span>🏀 Sports</span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -96,58 +120,44 @@
                 <h2 class="section-title">🗓 Workout Frequency & Duration</h2>
 
                 <div class="input-group">
-                    <label>Ngày tập trong tuần:</label>
+                    <label>Training days of the week:</label>
                     <div class="day-selector">
-                        <input type="checkbox" id="t2" name="days" value="Thứ Hai" checked><label for="t2">T2</label>
-                        <input type="checkbox" id="t3" name="days" value="Thứ Ba"><label for="t3">T3</label>
-                        <input type="checkbox" id="t4" name="days" value="Thứ Tư" checked><label for="t4">T4</label>
-                        <input type="checkbox" id="t5" name="days" value="Thứ Năm"><label for="t5">T5</label>
-                        <input type="checkbox" id="t6" name="days" value="Thứ Sáu" checked><label for="t6">T6</label>
-                        <input type="checkbox" id="t7" name="days" value="Thứ Bảy"><label for="t7">T7</label>
-                        <input type="checkbox" id="cn" name="days" value="Chủ Nhật"><label for="cn">CN</label>
+                        <input type="checkbox" id="mon" name="days" value="Monday" ><label for="mon">Monday</label>
+                        <input type="checkbox" id="tues" name="days" value="Tuesday"><label for="tues">Tuesday</label>
+                        <input type="checkbox" id="wed" name="days" value="Wednesday" ><label for="wed">Wednesday</label>
+                        <input type="checkbox" id="thu" name="days" value="Thursday"><label for="thu">Thursday</label>
+                        <input type="checkbox" id="fri" name="days" value="Friday" ><label for="fri">Friday</label>
+                        <input type="checkbox" id="sat" name="days" value="Saturday"><label for="sat">Saturday</label>
+                        <input type="checkbox" id="sun" name="days" value="Sunday"><label for="sun">Sunday</label>
                     </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="duration">Thời lượng trung bình mỗi buổi (phút):</label>
-                    <input type="number" id="duration" name="duration" min="15" max="180" value="60" required>
                 </div>
             </div>
 
             <div class="plan-section target-section">
                 <h2 class="section-title">🔥 Weekly Target for Calorie Burn</h2>
                 <div class="slider-group">
-                    <label for="weekly_target">Tổng Calo mục tiêu đốt trong tuần (kcal):</label>
+                    <label for="weekly_target">Total weekly calorie burn target (kcal):</label>
                     <div class="slider-display">
                         <span id="targetValue">1500 kcal</span>
-                        <input type="range" id="weekly_target" name="weekly_target" min="500" max="5000" value="1500"
-                            step="100">
+                        <input type="range" id="weekly_target" name="weekly_target" min="500" max="10000" value="1500"
+                            step="10">
                     </div>
                 </div>
             </div>
 
             <button type="submit" class="generate-btn" id="generateBtn">
-                TẠO LỊCH TẬP NGAY
+                GENERATE NOW
             </button>
 
         </form>
 
         <div class="popup-overlay" id="planPopup">
             <div class="plan-box">
-                <h2 class="schedule-title">📅 KẾ HOẠCH TẬP LUYỆN CÁ NHÂN</h2>
-                <div id="planDetails">
+                <h2 class="schedule-title">📅 PERSONAL WORKOUT PLAN</h2>
+                <div id="planDetails" class="plan-table-container">
                 </div>
 
-                <div class="plan-options">
-                    <p>Bạn muốn làm gì tiếp theo?</p>
-                    <div class="option-buttons">
-                        <button type="button" onclick="editPlan()">Chỉnh sửa mục tiêu</button>
-                        <button type="button" onclick="savePlan()">Lưu Kế hoạch</button>
-                        <button type="button" onclick="sharePlan()">Chia sẻ</button>
-                    </div>
-                </div>
-
-                <button type="button" class="close-plan-btn" onclick="closePopup()">Đóng & Tiếp tục</button>
+                <button type="button" class="close-plan-btn" onclick="closePopup()">Close & Continue</button>
             </div>
         </div>
 
@@ -174,36 +184,46 @@
             planForm.addEventListener('submit', (e) => {
                 e.preventDefault();
 
-                // Giả định các thông tin cơ bản (Tuổi, Cân nặng, Chiều cao, Giới tính)
-                // đã được lưu trữ từ khảo sát ban đầu của người dùng
-                const assumedUserData = {
-                    age: 30,
-                    weight: 60, // kg
-                    height: 170, // cm
-                    gender: 'female',
-                    bmi: (60 / (1.7 * 1.7)).toFixed(1)
+                // Lấy ngày đã chọn
+                const selectedDays = Array.from(
+                    document.querySelectorAll('input[name="days"]:checked')
+                ).map(cb => cb.value);
+
+                // Lấy nhóm hoạt động
+                const selectedActivity = document.querySelector('input[name="activity"]:checked');
+
+                // Lấy target kcal
+                const weeklyTarget = document.getElementById('weekly_target').value;
+
+                // Gửi JSON sang backend
+                const payload = {
+                    days: selectedDays,
+                    activity: selectedActivity ? selectedActivity.value : null,
+                    weekly_target: weeklyTarget,
+                    weight: 60
                 };
 
-                // Lấy dữ liệu form
-                const formData = new FormData(planForm);
-                const data = { ...assumedUserData };
-
-                // Lấy các ngày đã chọn
-                const selectedDays = Array.from(document.querySelectorAll('input[name="days"]:checked')).map(cb => cb.value);
-                data['days'] = selectedDays;
-
-                for (let [key, value] of formData.entries()) {
-                    if (key !== 'days') {
-                        data[key] = value;
+                fetch("/api/class-picker/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrftoken
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        planDetails.innerHTML = `<p style="color:red">${data.error}</p>`;
+                    } else {
+                        planDetails.innerHTML = data.table;
+                        const table = planDetails.querySelector("table");
+                        if (table) table.classList.add("weekly-plan-table");
                     }
-                }
-
-                // Giả lập tạo lịch tập
-                const planHTML = generateMockPlan(data);
-
-                planDetails.innerHTML = planHTML;
-                planPopup.classList.add('show');
+                    planPopup.classList.add("show");
+                });
             });
+
 
             // --- 3. Hàm tạo lịch tập giả lập ---
             function generateMockPlan(data) {
@@ -218,25 +238,6 @@
                 const activityName = selectedActivityInput.value;
                 const activityIcon = selectedActivityInput.nextElementSibling.querySelector('.activity-icon').outerHTML;
 
-                // Giả lập gợi ý chi tiết dựa trên nhóm hoạt động
-                let detailedActivity = "";
-                switch (activityName) {
-                    case "Ngoài trời":
-                        detailedActivity = "Đi bộ nhanh, chạy bộ, leo núi nhẹ hoặc đạp xe ngoài công viên.";
-                        break;
-                    case "Nghệ thuật":
-                        detailedActivity = "Khiêu vũ (Zumba/Dance), Aerobic cường độ vừa hoặc học võ (Taekwondo/Karate).";
-                        break;
-                    case "Trong nhà":
-                        detailedActivity = "Tập Yoga, Pilates, các bài tập thể dục tại chỗ hoặc bài tập giãn cơ.";
-                        break;
-                    case "Kháng lực":
-                        detailedActivity = "Tập tạ, squat, lunges, plank và các bài tập tăng cường cơ bắp.";
-                        break;
-                    default:
-                        detailedActivity = "Bài tập kết hợp ngẫu nhiên.";
-                }
-
                 let tableRows = '';
 
                 data.days.forEach(day => {
@@ -245,7 +246,7 @@
                         <tr>
                             <td>${day}</td>
                             <td>${activityIcon} ${activityName}</td>
-                            <td>${data.duration} phút</td>
+                            <td>${data.duration} minutes</td>
                             <td>~${dailyCalorie} kcal</td>
                             <td>${activityDescription}</td>
                         </tr>
@@ -253,15 +254,15 @@
                 });
 
                 // Thêm hàng cho các ngày nghỉ
-                const allDays = ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy", "Chủ Nhật"];
+                const allDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
                 allDays.filter(day => !data.days.includes(day)).forEach(day => {
                     tableRows += `
                         <tr>
                             <td>${day}</td>
-                            <td>Nghỉ ngơi 😴</td>
-                            <td>0 phút</td>
+                            <td>Rest day 😴</td>
+                            <td>0 minutes</td>
                             <td>0 kcal</td>
-                            <td>Thư giãn và Phục hồi cơ</td>
+                            <td>Relax and recover your muscles</td>
                         </tr>
                     `;
                 });
@@ -269,7 +270,7 @@
                 // Thông tin thêm từ dữ liệu khảo sát
                 const userInfoHTML = `
                     <p style="text-align: center; margin-bottom: 25px; font-style: italic; color: #555;">
-                        (Thông tin người dùng từ khảo sát ban đầu: Tuổi ${data.age}, Cân nặng ${data.weight}kg, BMI ${data.bmi}).
+                        (User information from the initial survey: Age ${data.age}, Weight ${data.weight}kg, BMI ${data.bmi}).
                     </p>
                 `;
 
@@ -279,11 +280,11 @@
                         <table class="weekly-plan-table">
                             <thead>
                                 <tr>
-                                    <th>Ngày</th>
-                                    <th>Nhóm hoạt động</th>
-                                    <th>Thời lượng</th>
-                                    <th>Mục tiêu Calo</th>
-                                    <th>Gợi ý chi tiết</th>
+                                    <th>Day</th>
+                                    <th>Activity Group</th>
+                                    <th>Duration</th>
+                                    <th>Kcal</th>
+                                    <th>Detailed suggestion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -291,8 +292,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <p style="font-family: 'DynaPuff', system-ui; font-size: 1.1rem; color: var(--color-accent);">
-                        🎉 Tổng mục tiêu Calo tuần này: ${data.weekly_target} kcal, chia đều cho ${numDays} ngày tập.
+                    <p style="font-family: 'Maven Pro', sans-serif; font-size: 1.1rem; color: var(--color-accent); font-weight: 600; ">
+                        🎉 Total calorie target for this week: ${data.weekly_target} kcal, evenly divided across ${numDays} training days.
                     </p>
                 `;
             }
@@ -306,14 +307,6 @@
                 window.closePopup();
                 // Logic cuộn lên để chỉnh sửa form
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
-
-            window.savePlan = () => {
-                alert("Đã lưu kế hoạch vào bộ sưu tập cá nhân của bạn!");
-            };
-
-            window.sharePlan = () => {
-                alert("Kế hoạch đã sẵn sàng để chia sẻ (Chức năng này đang được phát triển).");
             };
         });
     </script>

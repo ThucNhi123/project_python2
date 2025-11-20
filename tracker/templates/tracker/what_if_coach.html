@@ -1,24 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>🌸 Hello Kitty Fitness 🌸</title>
   <link rel="stylesheet" href="{% static 'tracker/css/what_if_coach.css' %}">
-   <!--font Modak and DynaPuff-->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
+  <!--font Modak and DynaPuff-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
+  <script>
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let cookie of cookies) {
+              cookie = cookie.trim();
+              if (cookie.startsWith(name + "=")) {
+                  cookieValue = cookie.substring(name.length + 1);
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  </script>
 
   <div id="aboutPopup" class="popup-overlay">
     <div class="popup-box">
       <div class="popup-inner">
         <h2 class="popup-title">About us</h2>
-        <p class ="popup-desc">
-          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
-          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+        <p class="popup-desc">
+          Beautiful and passionate souls converge to create Kitty Fitness - 
+          a space where technology meets emotion, radiating the energy of love and warmth 💖
         </p>
 
         <ul class="popup-members">
@@ -29,7 +49,7 @@
           <li>11245921 – Hoàng Thục Nhi</li>
           <li>11245899 – Vũ Trần Cát Linh</li>
         </ul>
-        
+
         <img class="kitty-left" src="{% static 'tracker/images/pop-up1.png' %}">
         <img class="kitty-right" src="{% static 'tracker/images/pop-up2.png' %}">
       </div>
@@ -39,7 +59,7 @@
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src= {% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
+      <img src={% static 'tracker/images/gif3.gif' %} alt="Kitty Logo">
       <h1>Kitty Fitness</h1>
     </div>
     <nav>
@@ -48,80 +68,124 @@
   </header>
 
   <!--Sửa ở đây-->
-    <div class="main-container">
-        <div class="prediction-box">
-            <h2 class="section-title dynapuff">What-if Coach - Dự đoán năng lượng đốt cháy của bạn</h2>
-            <p class="section-desc">
-                Nhập thông tin buổi tập để Hello Kitty cho bạn biết hôm nay mình đã
-                đốt bao nhiêu năng lượng nhé
-            </p>
-            <div class="underline"></div>
+  <div class="main-container">
+    <div class="prediction-box">
+      <h2 class="section-title">🏋️ What-if Coach – Predict Your Energy Burn 🤸</h2>
+      <p class="section-desc">
+        Enter your workout details and let Hello Kitty show you how much energy
+        you burned today! 💪✨
+      </p>
+      <div class="underline"></div>
 
-            <form id="burnPredictionForm">
-                <div class="input-group-custom">
-                    <label for="duration">Thời lượng thời gian bạn tập hôm nay (phút):</label>
-                    <input type="number" id="duration" name="duration" required>
-                </div>
-                <div class="input-group-custom">
-                    <label for="heartrate">Nhịp tim trung bình buổi tập (bpm):</label>
-                    <input type="number" id="heartrate" name="heartrate" required>
-                </div>
-
-                <button type="submit" class="calculate-btn">Tính ngay</button>
-            </form>
+      <form id="burnPredictionForm">
+        <div class="input-group-custom">
+          <label for="duration">Workout duration today (minutes):</label>
+          <input type="number" id="duration" name="duration" required>
         </div>
-    </div>
-
-    <div id="resultPopup" class="popup-overlay">
-        <div class="popup-box result-popup-box">
-            <div class="popup-inner">
-                <h2 class="popup-title-result dynapuff">Kết quả đốt cháy</h2>
-                <p id="resultText" class="popup-desc-result">
-                    </p>
-            </div>
+        <div class="input-group-custom">
+          <label for="heartrate">Average heart rate during workout (bpm):</label>
+          <input type="number" id="heartrate" name="heartrate" required>
         </div>
+
+        <button type="submit" class="calculate-btn">Calculate now</button>
+      </form>
     </div>
+  </div>
+
+  <div id="resultPopup" class="popup-overlay">
+    <div class="popup-box result-popup-box">
+      <div class="popup-inner">
+        <img src="{% static 'tracker/images/gif2.gif' %}" class="result-gif">
+
+        <h2 class="popup-title-result">Your Burn Result</h2>
+        <p id="resultText" class="popup-desc-result"></p>
+
+        <button id="closeResultBtn" class="close-result-btn">Close</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-  const aboutBtn = document.getElementById("aboutBtn");
-  const aboutPopup = document.getElementById("aboutPopup");
-  const popupBox = document.querySelector(".popup-box");
+    const aboutBtn = document.getElementById("aboutBtn");
+    const aboutPopup = document.getElementById("aboutPopup");
+    const popupBox = document.querySelector(".popup-box");
 
-  // mở popup
-  aboutBtn.addEventListener("click", () => {
+    // mở popup
+    aboutBtn.addEventListener("click", () => {
       aboutPopup.style.display = "flex";
-  });
-
-  // click ngoài popup để tắt
-  aboutPopup.addEventListener("click", (e) => {
-      if (!popupBox.contains(e.target)) {
-          aboutPopup.style.display = "none";
-      }
-  });
-</script>
-
-<script>
-document.getElementById("surveyForm").addEventListener("submit", async function(e) {
-    e.preventDefault();  // Ngăn reload trang
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    const response = await fetch("{% url 'save_survey' %}", {
-        method: "POST",
-        body: formData,
-        headers: {
-            "X-Requested-With": "XMLHttpRequest"
-        }
     });
 
-    const result = await response.json();
+    // click ngoài popup để tắt
+    aboutPopup.addEventListener("click", (e) => {
+      if (!popupBox.contains(e.target)) {
+        aboutPopup.style.display = "none";
+      }
+    });
+  </script>
 
-    if (result.status === "success") {
-        document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
-    }
-});
-</script>
+  <script>
+    document.getElementById("burnPredictionForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append("duration", document.getElementById("duration").value);
+      formData.append("heartrate", document.getElementById("heartrate").value);
+
+      const res = await fetch("/api/what-if/", {
+          method: "POST",
+          body: formData,
+          headers: {
+              "X-CSRFToken": getCookie("csrftoken")
+          }
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+          alert(data.error);
+          return;
+      }
+
+      const resultPopup = document.getElementById("resultPopup");
+
+      // Hiển thị kết quả
+      document.getElementById("resultText").innerHTML =
+          `🔥 You burned about <b>${data.predicted} kcal</b> today!`;
+
+      resultPopup.style.display = "flex";
+  });
+  </script>
+
+  <script>
+    document.getElementById("closeResultBtn").addEventListener("click", () => {
+      const resultPopup = document.getElementById("resultPopup");
+      resultPopup.style.display = "none";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+  <script>
+  setInterval(() => {
+      const gif = document.querySelector(".result-gif");
+      if (gif) {
+          const src = gif.src;
+          gif.src = "";   // clear source
+          gif.src = src;  // reload GIF to restart animation
+      }
+  }, 4000); // reset mỗi 4 giây (chỉnh tùy GIF dài hay ngắn)
+  </script>
+
+  <script>
+  document.getElementById("resultPopup").addEventListener("transitionstart", () => {
+      const gif = document.querySelector(".result-gif");
+      gif.src = gif.src;
+  });
+  </script>
 
 </body>
+
 </html>

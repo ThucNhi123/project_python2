@@ -1,0 +1,54 @@
+Food_Name,Portion,Calories_per_serving,Cuisine,Category
+White rice,1 bowl (150g),200,Vietnam,Starch
+Pho bo,1 bowl,420,Vietnam,Soup
+Chicken pho,1 bowl,380,Vietnam,Soup
+Hue beef noodle soup,1 bowl,480,Vietnam,Soup
+Bun cha,1 portion,520,Vietnam,Main dish
+Grilled pork vermicelli,1 portion,550,Vietnam,Main dish
+Broken rice with ribs and egg,1 plate,750,Vietnam,Main dish
+Chicken rice,1 plate,420,Vietnam,Main dish
+Xoi ga (sticky rice with chicken),1 box,480,Vietnam,Starch
+Banh mi thit,1 loaf,460,Vietnam,Bread
+Banh cuon,1 portion,350,Vietnam,Rice flour
+Nem ran / Cha gio (fried roll),1 piece,260,Vietnam,Fried
+Fresh spring roll,1 roll,140,Vietnam,Roll
+Rice paper snack,1 pack,430,Vietnam,Snack
+Yogurt,1 cup (100g),90,Vietnam,Dairy
+Milk tea,1 cup (500ml),350,Vietnam,Drink
+Black sugar pearl milk,1 cup,120,Drink,Sugar
+Smoothie,1 cup,220,Drink,Smoothie
+Beer,1 can (330ml),150,Drink,Alcohol
+Soft drink,1 can (330ml),140,Drink,Sugar
+Fresh milk,1 cup (200ml),120,Drink,Dairy
+Soy milk,1 cup (200ml),90,Drink,Soy
+Apple,1 fruit (150g),80,Fruit,Fruit
+Banana,1 fruit (120g),105,Fruit,Fruit
+Orange,1 fruit (150g),62,Fruit,Fruit
+Pomelo,1 segment (200g),80,Fruit,Fruit
+Boiled egg,1 egg,70,Protein,Egg
+Fried egg,1 egg,165,Protein,Egg
+Shrimp stir‑fry,100g,208,Protein,Seafood
+Stir‑fried beef,100g,250,Protein,Red meat
+Fried potato,1 plate (100g),320,Western,Fried
+Pizza slice,1 slice (1/8 pizza),280,Western,Bread
+Hamburger,1 burger,500,Western,Fast food
+Hotdog,1,320,Western,Fast food
+Spaghetti bolognese,1 plate,540,Western,Noodles
+Salad,1 bowl,120,Western,Salad
+Fried chicken,1 piece,320,Western,Fried
+Popcorn,1 box,540,Snack,Snack
+Milk tea (170ml),1 cup,140,Drink,Tea
+Ice cream (66g),1 stick,180,Dessert,Ice cream
+Flan,1 cup,150,Dessert,Cake
+Steamed bun with meat,1 bun,220,Vietnam,Bread
+Banh chung,1/8 cake (~100g),200,Vietnam,Cake
+Banh tet,1 slice (~100g),220,Vietnam,Cake
+Fried rice,1 plate,550,Vietnam,Rice
+Chicken noodle soup,1 bowl,380,Vietnam,Soup
+Crab noodle soup,1 bowl,410,Vietnam,Soup
+Fermented fish noodle soup,1 bowl,520,Vietnam,Soup
+Stir‑fried noodles with seafood,1 small plate,650,Vietnam,Main dish
+Sweet & sour rib stir‑fry,1 portion (~100g meat),290,Vietnam,Main dish
+Braised fish,1 piece (100g),320,Vietnam,Main dish
+Braised tofu,1 piece (100g),210,Vietnam,Vegetarian
+Vegetable stir‑fry,1 plate (150g),180,Vietnam,Vegetarian

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>🌸 Hello Kitty Fitness 🌸</title>
@@ -14,13 +14,14 @@
   <!-- POPUP KẾT QUẢ -->
   <div id="resultPopup" class="result-popup-overlay" style="display:none;">
     <div class="result-popup-box">
-      <h2 class="result-popup-title">🎀 Hoạt động cần hoàn thành</h2>
+      <h2 class="result-popup-title">🎀 Activity You Need to Complete</h2>
+      <img src="{% static 'tracker/images/gif2.gif' %}" class="result-gif">
 
       <p class="result-line1" id="popupCalories">0 kcal</p>
       <p class="result-line" id="popupSummaryText">...</p>
       <p class="warning-text" id="popupWarning"></p>
 
-      <button id="closeResultPopup" class="close-btn">Đóng</button>
+      <button id="closeResultPopup" class="close-btn">Close</button>
     </div>
   </div>
 
@@ -31,8 +32,8 @@
       <div class="popup-inner">
         <h2 class="popup-title">About us</h2>
         <p class ="popup-desc">
-          Những tâm hồn xinh xắn nhiệt huyết cùng nhau tạo nên Kitty Fitness – 
-          nơi công nghệ chạm đến cảm xúc và lan tỏa năng lượng yêu thương 💖
+          Beautiful and passionate souls converge to create Kitty Fitness - 
+          a space where technology meets emotion, radiating the energy of love and warmth 💖
         </p>
 
         <ul class="popup-members">
@@ -65,7 +66,7 @@
 
   {% if not profile %}
   <script>
-  alert("Bạn chưa nhập khảo sát thể chất! Vui lòng hoàn thành trước khi sử dụng tính năng này 💗");
+  alert("You haven't completed your fitness survey yet! Please finish it before using this feature 💗");
   window.location.href = "/khao-sat/";
   </script>
   {% endif %}
@@ -84,15 +85,12 @@
 
   <div class="wave-divider"></div>
 
+  <div class="main-wrapper">
     <main class="swap-main-content">
       <div class="swap-header">
         <h2 class="swap-title">
-            Đổi món ăn yêu thích sang bài tập tương ứng 🍔 🔄 🏃‍♀️
+            Convert Your Favorite Food Into Equivalent Exercises 🍔 🔄 🏃‍♀️
         </h2>
-        <p class="swap-subtitle">
-          Bạn vừa ăn một chiếc bánh kem? Cùng Kitty xem bạn phải tập bao lâu
-          để cân bằng lại nhé!
-        </p>
         <div class="swap-divider"></div>
       </div>
 
@@ -102,29 +100,29 @@
                 <form id="swapAlgorithmForm" class="input-form">
                     {% csrf_token %} 
                     <div class="form-group">
-                        <label for="food_name">Tên món ăn:</label>
-                        <input type="text" id="food_name" name="food_name" required placeholder="Ví dụ: Bánh mì kẹp thịt">
+                        <label for="food_name">Food name:</label>
+                        <input type="text" id="food_name" name="food_name" required placeholder="Tell me what you ate today 🍽️💖">
                     </div>
                     
                     <div class="form-group">
-                        <label for="quantity">Số lượng:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" required placeholder="Ví dụ: 1 phần">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" required placeholder="Enter number of servings">
                     </div>
                     
                     <div class="form-group">
-                        <label for="max_duration">Thời gian tập tối đa (phút):</label>
-                        <input type="number" id="max_duration" name="max_duration" min="1" max="180" required placeholder="Ví dụ: 60">
+                        <label for="max_duration">Maximum workout duration (minutes):</label>
+                        <input type="number" id="max_duration" name="max_duration" min="1" max="180" required placeholder="Enter maximum duration per session">
                     </div>
 
                     <button type="submit" id="calculateSwapBtn" class="swap-btn dynapuff">
-                        Tính ngay
+                        Calculate
                     </button>
                 </form>
 
               </section>
         </div>
     </main>
-
+  </div>
 <script>
   const aboutBtn = document.getElementById("aboutBtn");
   const aboutPopup = document.getElementById("aboutPopup");
@@ -144,17 +142,16 @@
 </script>
 
 <script>
-  document.getElementById("swapAlgorithmForm").addEventListener("submit", async function(e) {
+document.getElementById("swapAlgorithmForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const foodName = document.getElementById("food_name").value;
     const quantity = Number(document.getElementById("quantity").value);
     const maxDuration = Number(document.getElementById("max_duration").value);
 
-    const foodKcal = quantity * 250;
-
     const payload = new FormData();
-    payload.append("food_kcal", foodKcal);
+    payload.append("food_name", foodName);
+    payload.append("quantity", quantity);
     payload.append("age", userProfile.age);
     payload.append("sex", userProfile.sex);
     payload.append("height", userProfile.height);
@@ -163,7 +160,7 @@
     payload.append("body_temp", userProfile.body_temp);
     payload.append("max_min", maxDuration);
 
-    const response = await fetch("{% url 'api_swap_calorie' %}", {
+    const response = await fetch("/api/swap-calorie/", {
         method: "POST",
         body: payload,
         headers: { "X-CSRFToken": csrftoken }
@@ -171,20 +168,22 @@
 
     const data = await response.json();
 
-    // ghi vào popup
-    document.getElementById("popupCalories").innerText = `${foodKcal} kcal`;
+    if (data.error) {
+        alert(data.error);
+        return;
+    }
+
+    document.getElementById("popupCalories").innerText = `${data.food_kcal} kcal`;
 
     const bpm = userProfile.heart_rate;
 
     document.getElementById("popupSummaryText").innerText =
-      `Để đốt ${foodKcal} kcal từ ${quantity} × ${foodName}, bạn cần ${data.required_minutes} phút ở ${bpm} bpm.`;
+      `To burn ${data.food_kcal} kcal from ${quantity} × ${foodName}, you need ${data.required_minutes} minutes at ${bpm} bpm.`;
 
-
-
-    // mở popup
     document.getElementById("resultPopup").style.display = "flex";
 });
 </script>
+
 
 <script>
 document.getElementById("surveyForm").addEventListener("submit", async function(e) {
@@ -204,7 +203,7 @@ document.getElementById("surveyForm").addEventListener("submit", async function(
     const result = await response.json();
 
     if (result.status === "success") {
-        document.getElementById("surveyMessage").innerText = "💖 Cảm ơn bạn đã nhập thông tin!";
+        document.getElementById("surveyMessage").innerText = "💖 Thank you for submitting your information!";
     }
 });
 </script>
@@ -232,6 +231,24 @@ const csrftoken = getCookie('csrftoken');
     document.getElementById("resultPopup").style.display = "none";
   });
 </script>
+
+<script>
+  setInterval(() => {
+      const gif = document.querySelector(".result-gif");
+      if (gif) {
+          const src = gif.src;
+          gif.src = "";   // clear source
+          gif.src = src;  // reload GIF to restart animation
+      }
+  }, 4000); // reset mỗi 4 giây (chỉnh tùy GIF dài hay ngắn)
+  </script>
+
+  <script>
+  document.getElementById("resultPopup").addEventListener("transitionstart", () => {
+      const gif = document.querySelector(".result-gif");
+      gif.src = gif.src;
+  });
+  </script>
 
 </body>
 </html>
