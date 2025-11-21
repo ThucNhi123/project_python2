@@ -23,4 +23,7 @@ urlpatterns = [
     path('calorie-swap/', views.calorie_swap, name='calorie_swap'),
     path('api/swap-calorie/', api_swap_calorie, name="api_swap_calorie"), 
     path("api/food-suggest/", views.api_food_suggestions, name="api_food_suggestions"),
+
+    path("meal-suggest/", views.meal_suggest, name="meal_suggest"),
+
 ]

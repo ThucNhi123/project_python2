@@ -132,16 +132,6 @@
             <input type="number" name="body_temp" value="{{ profile.body_temp|default:'' }}" required>
           </div>
 
-          <div class="form-row">
-            <label>Time efficiency (%):</label>
-            <input type="number" name="efficiency" value="{{ profile.efficiency|default:'' }}" required>
-          </div>
-
-          <div class="form-row">
-            <label>Total intensity (1–10):</label>
-            <input type="number" name="intensity" value="{{ profile.intensity|default:'' }}" required>
-          </div>
-
           <button type="submit">Submit survey</button>
       </form>
 
@@ -205,6 +195,17 @@
         Just had a slice of cake? Kitty will instantly calculate the 
         equivalent workout to 'burn off' that energy!<br>
         🍓 “Eat sweet - Train neat - Stay fit!”
+      </p>
+    </a>
+
+    <a class="feature-card" href="{% url 'meal_suggest' %}">
+      <img src="{% static 'tracker/images/card6.png' %}" alt="Kitty Meal">
+      <h3>SMART MEAL SUGGESTION</h3>
+      <p>
+        Tell Kitty one ingredient — and she’ll create delicious, balanced 
+        meal ideas just for you! From calories to cooking steps, everything 
+        is neatly prepared and ready to explore.<br>
+        🍒 “One ingredient – Endless tasty possibilities!”
       </p>
     </a>
   </div>

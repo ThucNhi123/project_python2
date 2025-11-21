@@ -479,3 +479,7 @@ def api_what_if (request):
         "compare_duration": result["compare_duration"], 
         "compare_heartrate": result["compare_heartrate"], 
     })
+
+# --------------------- MEAL-SUGGEST --------------------------
+def meal_suggest(request):
+    return render(request, "tracker/meal_suggest.html")

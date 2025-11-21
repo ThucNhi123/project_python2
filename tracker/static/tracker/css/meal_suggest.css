@@ -1,0 +1,370 @@
+/*-------font Modak and DynaPuff-------*/
+.modak-regular {
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dynapuff {
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.sigmar {
+  font-family: "Sigmar One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-bubbles-regular {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.maven-pro {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/*-------font Modak and DynaPuff-------*/
+
+body {
+  margin: 0;
+  font-family: "Maven Pro", sans-serif;
+  background-color: #ffd6eb;
+  color: #7a1c48;
+  overflow: auto;
+  padding-bottom: 250px;
+}
+
+/* --------Header-------------- */
+header {
+  background-color: #d85a8d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 9999; 
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+header .logo img {
+  width: 60px;
+  height: 60px;
+}
+
+header h1 {
+  font-family: "Sigmar One", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 1px;
+  font-weight: 1;
+  top: 3px; 
+  margin: 0; 
+  line-height: 1;
+  position: relative;   
+}
+
+nav a {
+  font-family: "Maven Pro", sans-serif;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+  letter-spacing: 4.5px;
+  padding-right: 130px; 
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+/* --------Header-------------- */
+
+/* ------ Viền gợn sóng dưới header---------- */
+body {
+  margin: 0;
+  background-color: #ffd6eb;
+  font-family: "Maven Pro", sans-serif;
+}
+
+/* Header */
+header {
+  background-color: #d85a8d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 50px;
+  letter-spacing: 4px;
+}
+
+/* -------------------- POPUP ABOUT US -------------------- */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    background: #f4a7cd;
+    backdrop-filter: blur(6px);
+    width: 75%;
+    max-width: 800px;
+    border-radius: 35px;
+    padding: 40px 20px;
+    position: relative;
+    animation: popupFade 0.3s ease-out;
+    border: 4px solid #d85a8d;
+    transition: box-shadow 0.4s ease-in-out, 
+                transform 0.2s ease-in-out; 
+}
+
+.popup-inner {
+    text-align: center;
+    color: #7a1c48;
+    font-family: "Maven Pro", sans-serif;
+}
+
+.popup-title {
+    font-family: "Sigmar One", sans-serif;
+    font-size: 45px;
+    margin: 0 0 10px 0;
+    color: #7a1c48;
+}
+
+.popup-desc {
+    font-size: 20px;
+    margin: 10px 0 25px 0;
+    padding: 0 30px;
+}
+
+.popup-members {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.popup-members li {
+    margin: 8px 0;
+}
+
+.kitty-left {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    width: 140px;
+}
+
+.kitty-right {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    width: 140px;
+}
+
+/* -------------------- MEAL SUGGEST STYLES (Phần mới) -------------------- */
+
+.meal-suggest-container {
+    padding-top: 150px; /* Đẩy nội dung xuống dưới header cố định */
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.main-title {
+    color: #920448; /* Màu hồng đậm hơn cho tiêu đề */
+    font-size: 3.5rem;
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+}
+
+.title-divider {
+    border: none;
+    height: 5px;
+    width: 250px;
+    background-color: #d85a8d; /* Màu hồng đậm */
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.meal-description {
+    font-size: 1.2rem;
+    color: #7a1c48;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+/* --- Search Box --- */
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 3px solid #d85a8d;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 650px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    color: #d85a8d;
+    margin-right: 10px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #d85a8d;
+    background: transparent;
+    font-family: "Maven Pro", sans-serif;
+    font-weight: 500;
+}
+.search-input::placeholder {
+    color: #d85a8d;
+    opacity: 0.7;
+}
+
+
+/* --- Results Table --- */
+.meal-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 3px solid #d85a8d;
+    border-radius: 15px;
+    overflow: hidden; /* Quan trọng để bo góc hoạt động */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.meal-table th, .meal-table td {
+    padding: 15px 10px;
+    border-left: 1px solid #d85a8d;
+    border-top: 1px solid #d85a8d;
+    color: #7a1c48;
+    vertical-align: top;
+    font-size: 1.1rem;
+}
+
+.meal-table th:first-child, .meal-table td:first-child {
+    border-left: none;
+}
+.meal-table thead tr:first-child th {
+    border-top: none;
+}
+
+/* Header Row Styling */
+.meal-table thead tr {
+    background-color: #f5b2ce; /* Màu hồng nhạt cho tiêu đề */
+    color: #7a1c48;
+    font-family: "DynaPuff", system-ui;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Bo góc cho header */
+.meal-table thead th:first-child {
+    border-top-left-radius: 12px;
+}
+.meal-table thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+
+/* Body Row Styling */
+.meal-table tbody tr {
+    background-color: #ffe6f3; /* Màu hồng nền cho các dòng */
+    transition: background-color 0.3s;
+}
+.meal-table tbody tr:nth-child(even) {
+    background-color: #f7d6e4; /* Màu hồng nhạt hơn cho dòng chẵn (tùy chọn) */
+}
+
+
+/* Styling for Steps and Ingredients buttons/details */
+.show-btn {
+    background-color: #d85a8d; /* Màu nút */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: "Maven Pro", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    transition: background-color 0.3s;
+    display: block; /* Chiếm toàn bộ chiều rộng ô */
+    width: 100%;
+    text-align: center;
+}
+
+.ingredients-btn {
+    background-color: #920448; /* Nút Ingredients có màu đậm hơn */
+}
+
+.steps-detail, .ingredients-detail {
+    background-color: #ffffff;
+    border: 1px solid #d85a8d;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    white-space: pre-wrap; /* Giữ nguyên định dạng xuống dòng */
+}
