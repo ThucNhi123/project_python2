@@ -5,11 +5,10 @@ from django.http import HttpResponse, JsonResponse
 import traceback
 
 from .models import UserProfile
-from features_for_web.swap_calo import swap_calories
+from features_for_web.swap_calo import swap_calories, food_db
 from features_for_web.weekly_planner import weekly_plan_generator, UserProfile as MLProfile
 from features_for_web.class_picker import make_weekly_plan
 from features_for_web.what_if import what_if_predict
-from tracker.models import UserProfile
 
 # --------------------- LANDING PAGE --------------------------
 def landing_page(request):
@@ -131,6 +130,17 @@ def api_swap_calorie (request):
         return JsonResponse(result)
     
     return JsonResponse({"error": "POST only"}, status=405)
+
+def api_food_suggestions(request):
+    """Return list of matching foods from CSV"""
+    query = request.GET.get("q", "").lower().strip()
+    if not query:
+        return JsonResponse({"result": []})
+    
+    matches = food_db[food_db["key"].str.contains(query)]
+    results = list(matches["Food_Name"].head(10).values)
+
+    return JsonResponse({"results": results})
 
 # --------------------- WEEKLY PLAN GENERATOR --------------------------
 model = joblib.load("artifacts/best_calorie_model.pkl")

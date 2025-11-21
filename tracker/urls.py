@@ -21,5 +21,6 @@ urlpatterns = [
     path("api/what-if/", views.api_what_if, name="api_what_if"),
 
     path('calorie-swap/', views.calorie_swap, name='calorie_swap'),
-    path('api/swap-calorie/', api_swap_calorie, name="api_swap_calorie")
+    path('api/swap-calorie/', api_swap_calorie, name="api_swap_calorie"), 
+    path("api/food-suggest/", views.api_food_suggestions, name="api_food_suggestions"),
 ]

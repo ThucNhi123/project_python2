@@ -11,11 +11,58 @@
  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DynaPuff:wght@400..700&family=Maven+Pro:wght@400..900&family=Modak&family=Rubik+Bubbles&family=Sigmar+One&display=swap" rel="stylesheet">
 </head>
 <body>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const foodInput = document.getElementById("food_name");
+      const suggestBox = document.getElementById("foodSuggestions");
+
+      foodInput.addEventListener("input", async function () {
+          const query = this.value.trim();
+
+          if (query.length === 0) {
+              suggestBox.innerHTML = "";
+              return;
+          }
+
+          const res = await fetch(`/api/food-suggest/?q=${query}`);
+          const data = await res.json();
+
+          suggestBox.innerHTML = "";
+
+          data.results.forEach(item => {
+              const div = document.createElement("div");
+              div.classList.add("autocomplete-item");
+              div.textContent = item;
+              div.addEventListener("click", () => {
+                  foodInput.value = item;
+                  suggestBox.innerHTML = "";
+              });
+              suggestBox.appendChild(div);
+          });
+      });
+
+      document.addEventListener("click", (e) => {
+          if (!foodInput.contains(e.target)) {
+              suggestBox.innerHTML = "";
+          }
+      });
+  });
+  </script>
+
+
+    // Ẩn dropdown khi click ngoài
+    document.addEventListener("click", (e) => {
+        if (!foodInput.contains(e.target)) {
+            suggestBox.innerHTML = "";
+        }
+    });
+  </script>
+
   <!-- POPUP KẾT QUẢ -->
   <div id="resultPopup" class="result-popup-overlay" style="display:none;">
     <div class="result-popup-box">
-      <h2 class="result-popup-title">🎀 Activity You Need to Complete</h2>
       <img src="{% static 'tracker/images/gif2.gif' %}" class="result-gif">
+      <h2 class="result-popup-title">🎀 Activity You Need to Complete</h2>
 
       <p class="result-line1" id="popupCalories">0 kcal</p>
       <p class="result-line" id="popupSummaryText">...</p>
@@ -101,7 +148,8 @@
                     {% csrf_token %} 
                     <div class="form-group">
                         <label for="food_name">Food name:</label>
-                        <input type="text" id="food_name" name="food_name" required placeholder="Tell me what you ate today 🍽️💖">
+                        <input type="text" id="food_name" name="food_name" autocomplete="off" required placeholder="Tell me what you ate today 🍽️💖">
+                        <div class="autocomplete-box" id="foodSuggestions"></div>
                     </div>
                     
                     <div class="form-group">
@@ -178,7 +226,7 @@ document.getElementById("swapAlgorithmForm").addEventListener("submit", async fu
     const bpm = userProfile.heart_rate;
 
     document.getElementById("popupSummaryText").innerText =
-      `To burn ${data.food_kcal} kcal from ${quantity} × ${foodName}, you need ${data.required_minutes} minutes at ${bpm} bpm.`;
+      `To burn ${data.food_kcal} kcal from ${quantity} ${foodName}, you need ${data.required_minutes} minutes at ${bpm} bpm.`;
 
     document.getElementById("resultPopup").style.display = "flex";
 });
